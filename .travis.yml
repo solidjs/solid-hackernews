@@ -5,7 +5,7 @@ branches:
     - master
 
 script:
-  - npm run build
+  - npm run build:deploy
 
 deploy:
   provider: pages

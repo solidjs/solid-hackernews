@@ -6,6 +6,7 @@
   "scripts": {
     "start": "serve public -l 5000 -s & rollup -w -c",
     "build": "rollup -c --environment production",
+    "build:deploy": "rollup -c --environment production --configDeploy",
     "serve": "serve public -l 5000 -s",
     "test": "test"
   },
@@ -15,7 +16,7 @@
   },
   "keywords": [
     "Solid",
-    "Realworld",
+    "Hacker News",
     "example"
   ],
   "author": "Ryan Carniato",
@@ -23,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/ryansolid/solid-hackernews/issues"
   },
-  "homepage": "https://github.com/ryansolid/solid-hackernews#readme",
+  "homepage": "https://ryansolid.github.io/solid-hackernews/",
   "dependencies": {
     "solid-js": "0.21.3"
   },
@@ -38,6 +39,7 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-multi-input": "^1.1.1",
     "rollup-plugin-terser": "^7.0.0",
+    "@open-wc/rollup-plugin-html": "^1.2.5",
     "serve": "^11.3.2",
     "solid-app-router": "0.0.4"
   }
