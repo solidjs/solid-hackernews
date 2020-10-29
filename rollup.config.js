@@ -1,5 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import babel from "@rollup/plugin-babel";
+import replace from "@rollup/plugin-replace";
 import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
 import multiInput from "rollup-plugin-multi-input";
@@ -42,6 +43,9 @@ export default (config) => {
         babelHelpers: "bundled",
         presets: ["solid"],
         plugins: ["@babel/syntax-dynamic-import", "@babel/plugin-proposal-optional-chaining"]
+      }),
+      replace({
+        "process.env.PUBLIC_URL": JSON.stringify(publicPath)
       }),
       html({
         inject: false,
