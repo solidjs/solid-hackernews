@@ -4,6 +4,7 @@ import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
 import multiInput from "rollup-plugin-multi-input";
 import { terser } from "rollup-plugin-terser";
+import url from "url";
 const pkg = require("./package.json");
 
 let publicPath = "/";
@@ -21,7 +22,7 @@ function template({ bundle }) {
 }
 
 export default (config) => {
-  config.configDeploy && (publicPath = pkg.homepage);
+  config.configDeploy && (publicPath = url.parse(pkg.homepage).pathname);
   return {
     input: ["src/index.js", "src/pages/**/!(*.data.js)"],
     output: {
