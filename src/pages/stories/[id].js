@@ -14,7 +14,7 @@ export default function Story(props) {
           </span>
           <p class="meta">
             {props.story.points} points | by{" "}
-            <Link href={`/users/${props.story.user}`}>{props.story.user}</Link>{" "}
+            <Link href={`users/${props.story.user}`}>{props.story.user}</Link>{" "}
             {props.story.time_ago} ago
           </p>
         </div>
