@@ -4,37 +4,37 @@ import UserData from "./pages/users/[id].data.js";
 
 export default [
   {
-    path: "/",
+    path: "",
     component: "pages/stories.js",
     data: StoriesData
   },
   {
-    path: "/new",
+    path: "new",
     component: "pages/stories.js",
     data: StoriesData
   },
   {
-    path: "/show",
+    path: "show",
     component: "pages/stories.js",
     data: StoriesData
   },
   {
-    path: "/ask",
+    path: "ask",
     component: "pages/stories.js",
     data: StoriesData
   },
   {
-    path: "/job",
+    path: "job",
     component: "pages/stories.js",
     data: StoriesData
   },
   {
-    path: "/users/:id",
+    path: "users/:id",
     component: "pages/users/[id].js",
     data: UserData
   },
   {
-    path: "/stories/:id",
+    path: "stories/:id",
     component: "pages/stories/[id].js",
     data: StoryData
   },
