@@ -75,7 +75,7 @@ export default (config) => {
         publicPath,
         template
       }),
-      // process.env.production && terser()
+      process.env.production && terser()
     ]
   }
 }

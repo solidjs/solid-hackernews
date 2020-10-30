@@ -8,7 +8,7 @@ export default function Comment(props) {
   return (
     <li class="comment">
       <div class="by">
-        <Link href={`/users/${props.comment.user}`}>{props.comment.user}</Link>{" "}
+        <Link href={`users/${props.comment.user}`}>{props.comment.user}</Link>{" "}
         {props.comment.time_ago} ago
       </div>
       <div class="text" innerHTML={props.comment.content} />
