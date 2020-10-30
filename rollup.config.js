@@ -16,6 +16,7 @@ function template({ bundle }) {
   <head>
     <title>Solid - Hacker News</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="${publicPath}index.css" />
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
