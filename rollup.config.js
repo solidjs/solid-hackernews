@@ -54,7 +54,6 @@ export default (config) => {
       dir: "public",
       format: "esm"
     },
-    // preserveEntrySignatures: false,
     plugins: [
       del({
         targets: ["public/*", "!public/index.css", "!public/404.html"],
@@ -76,7 +75,7 @@ export default (config) => {
         publicPath,
         template
       }),
-      process.env.production && terser()
+      // process.env.production && terser()
     ]
   }
 }
