@@ -698,7 +698,7 @@ const Link = props => {
 
     _el$.__click = e => {
       e.preventDefault();
-      router.push(router.root + props.href || "");
+      router.push(props.href || "");
     };
 
     spread(_el$, props, false, false);

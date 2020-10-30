@@ -1,5 +1,5 @@
 import { t as template, i as insert, a as createComponent, j as createRenderEffect, S as Show, m as memo, k as setAttribute, F as For } from '../index-deff7418.js';
-import { L as Link } from '../solid-app-router-3524d460.js';
+import { L as Link } from '../solid-app-router-c06edea4.js';
 
 const _tmpl$ = template(`<a target="_blank" rel="noreferer"></a>`, 2),
       _tmpl$2 = template(`<span class="host"> (<!---->)</span>`, 3),
