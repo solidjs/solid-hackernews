@@ -310,19 +310,15 @@ function runUpdates(fn, init) {
   } catch (err) {
     handleError(err);
   } finally {
-    do {
-      if (Updates) {
-        runQueue(Updates);
-        Updates = [];
-      }
-      if (!wait) {
-        runEffects(Effects);
-        Effects = [];
-      }
-    } while (Updates && Updates.length);
-    Updates = null;
+    if (Updates) {
+      runQueue(Updates);
+      Updates = null;
+    }
     if (wait) return;
-    Effects = null;
+    if (Effects.length) batch(() => {
+      runEffects(Effects);
+      Effects = null;
+    });else Effects = null;
   }
 }
 function runQueue(queue) {

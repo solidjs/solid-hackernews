@@ -1,4 +1,4 @@
-import { i as insert, a as createComponent, t as template, S as Show, j as createRenderEffect, k as setAttribute } from '../../index-dab64add.js';
+import { i as insert, a as createComponent, t as template, S as Show, j as createRenderEffect, k as setAttribute } from '../../index-deff7418.js';
 
 const _tmpl$ = template(`<h1>User : </h1>`, 2),
       _tmpl$2 = template(`<li class="about"></li>`, 2),

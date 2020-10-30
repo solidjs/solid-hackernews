@@ -1,5 +1,5 @@
-import { u as useContext, c as createContext, a as createComponent, t as template, i as insert, b as createSignal, d as createMemo, e as createComputed, r as render } from './index-dab64add.js';
-import { L as Link, u as useRouter, R as Route, a as Router } from './solid-app-router-6ab26aeb.js';
+import { u as useContext, c as createContext, a as createComponent, t as template, i as insert, b as createSignal, d as createMemo, e as createComputed, r as render } from './index-deff7418.js';
+import { L as Link, u as useRouter, R as Route, a as Router } from './solid-app-router-3524d460.js';
 
 const APIContext = createContext();
 function APIProvider(props) {

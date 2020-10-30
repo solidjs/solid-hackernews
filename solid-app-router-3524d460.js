@@ -1,4 +1,4 @@
-import { t as template, f as delegateEvents, u as useContext, s as spread, d as createMemo, a as createComponent, D as Dynamic, g as assignProps, h as dynamicProperty, b as createSignal, l as lazy, c as createContext } from './index-dab64add.js';
+import { t as template, f as delegateEvents, u as useContext, s as spread, d as createMemo, a as createComponent, D as Dynamic, g as assignProps, h as dynamicProperty, b as createSignal, l as lazy, c as createContext } from './index-deff7418.js';
 
 // Normalizes percent-encoded values in `path` to upper-case and decodes percent-encoded
 // values that are not reserved (i.e., unicode characters, emoji, etc). The reserved
@@ -724,9 +724,9 @@ const Router = props => {
 function createRouter(routes, initialURL, root = "") {
   const recognizer = new RouteRecognizer();
   processRoutes(recognizer, routes, root);
-  const [location, setLocation] = createSignal(initialURL ? initialURL : window.location.pathname + window.location.search);
-  const current = createMemo(() => recognizer.recognize(location()));
-  globalThis.window && (window.onpopstate = () => setLocation(window.location.pathname));
+  const [location, setLocation] = createSignal(initialURL ? initialURL : window.location.pathname.replace(root, "") + window.location.search);
+  const current = createMemo(() => recognizer.recognize(root + location()));
+  globalThis.window && (window.onpopstate = () => setLocation(window.location.pathname.replace(root, "")));
   return {
     root,
 
@@ -739,8 +739,12 @@ function createRouter(routes, initialURL, root = "") {
     },
 
     push(path) {
-      window.history.pushState("", "", path);
+      window.history.pushState("", "", root + path);
       setLocation(path);
+    },
+
+    addRoutes(routes) {
+      processRoutes(recognizer, routes, root);
     }
 
   };
@@ -751,7 +755,7 @@ function processRoutes(router, routes, root, parentRoutes = []) {
     const mapped = {
       path: root + r.path,
       handler: {
-        component: lazy(() => import(root + r.component)),
+        component: typeof r.component === "string" ? lazy(() => import(root + r.component)) : r.component,
         data: r.data
       }
     };
