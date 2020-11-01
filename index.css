@@ -1,6 +1,6 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 15px;
   background-color: #f2f3f5;
   margin: 0;
@@ -107,7 +107,7 @@ a {
   z-index: 998;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.news-list-nav a {
+.news-list-nav .page-link {
   margin: 0 1em;
 }
 .news-list-nav .disabled {
@@ -188,7 +188,7 @@ a {
 .item-view-header {
   background-color: #fff;
   padding: 1.8em 2em 1em;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .item-view-header h1 {
   display: inline;
@@ -295,5 +295,3 @@ a {
 .user-view .links a {
   text-decoration: underline;
 }
-
-
