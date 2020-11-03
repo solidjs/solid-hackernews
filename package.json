@@ -42,6 +42,6 @@
     "rollup-plugin-terser": "^7.0.0",
     "@open-wc/rollup-plugin-html": "^1.2.5",
     "serve": "^11.3.2",
-    "solid-app-router": "0.0.12"
+    "solid-app-router": "0.0.13"
   }
 }

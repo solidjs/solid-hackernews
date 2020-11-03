@@ -4,7 +4,7 @@ import { createComputed, createMemo, createSignal } from "solid-js";
 
 const TYPES = ["new", "show", "ask", "job"];
 function getType() {
-  const { router } = useRouter();
+  const router = useRouter();
   return createMemo(() => {
     const loc = router.location;
     for (let i = 0; i < TYPES.length; i++) {
