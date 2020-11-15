@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
+import alias from "@rollup/plugin-alias";
 import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
 import multiInput from "rollup-plugin-multi-input";
@@ -68,6 +69,10 @@ export default (config) => {
         ],
         watch: true
       }),
+      !process.env.production &&
+        alias({
+          entries: [{ find: /^solid-js$/, replacement: "solid-js/dev" }]
+        }),
       resolve({ extensions: [".js", ".jsx"] }),
       multiInput(),
       babel({

@@ -1,4 +1,4 @@
-import { render } from "solid-js/dom";
+import { render } from "solid-js/web";
 import { Router, Route } from "solid-app-router";
 
 import { APIProvider } from "./lib/api";
