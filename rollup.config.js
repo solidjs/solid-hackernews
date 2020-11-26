@@ -73,10 +73,9 @@ export default (config) => {
         alias({
           entries: [{ find: /^solid-js$/, replacement: "solid-js/dev" }]
         }),
-      resolve({ extensions: [".js", ".jsx"] }),
+      resolve(),
       multiInput(),
       babel({
-        exclude: "node_modules/**",
         babelHelpers: "bundled",
         presets: ["solid"],
         plugins: ["@babel/syntax-dynamic-import", "@babel/plugin-proposal-optional-chaining"]
