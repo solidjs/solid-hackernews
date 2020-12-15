@@ -1,46 +1,48 @@
+import { lazy } from "solid-js";
 import StoriesData from "./pages/stories.data.js";
 import StoryData from "./pages/stories/[id].data.js";
 import UserData from "./pages/users/[id].data.js";
+const Stories = lazy(() => import("./pages/stories.js"));
 
 export default [
   {
     path: "",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   },
   {
     path: "new",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   },
   {
     path: "show",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   },
   {
     path: "ask",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   },
   {
     path: "job",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   },
   {
     path: "users/:id",
-    component: "pages/users/[id].js",
+    component: lazy(() => import("./pages/users/[id].js")),
     data: UserData
   },
   {
     path: "stories/:id",
-    component: "pages/stories/[id].js",
+    component: lazy(() => import("./pages/stories/[id].js")),
     data: StoryData
   },
   {
     path: "*",
-    component: "pages/stories.js",
+    component: Stories,
     data: StoriesData
   }
 ];

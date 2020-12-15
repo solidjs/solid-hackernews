@@ -4,7 +4,6 @@ import replace from "@rollup/plugin-replace";
 import alias from "@rollup/plugin-alias";
 import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
-import multiInput from "rollup-plugin-multi-input";
 import { terser } from "rollup-plugin-terser";
 import url from "url";
 const pkg = require("./package.json");
@@ -53,11 +52,12 @@ function template({ bundle }) {
 export default (config) => {
   config.configDeploy && (publicPath = url.parse(pkg.homepage).pathname);
   return {
-    input: ["src/index.js", "src/pages/**/!(*.data.js)"],
+    input: "src/index.js",
     output: {
       dir: "public",
       format: "esm"
     },
+    preserveEntrySignatures: false,
     plugins: [
       del({
         targets: [
@@ -74,7 +74,6 @@ export default (config) => {
           entries: [{ find: /^solid-js$/, replacement: "solid-js/dev" }]
         }),
       resolve(),
-      multiInput(),
       babel({
         babelHelpers: "bundled",
         presets: ["solid"],
