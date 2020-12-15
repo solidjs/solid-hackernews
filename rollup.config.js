@@ -11,6 +11,7 @@ const pkg = require("./package.json");
 let publicPath = "/";
 
 function template({ bundle }) {
+  const chunks = Object.keys(bundle.bundle);
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,6 +45,7 @@ function template({ bundle }) {
       }(window.location))
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
+    <link rel="modulepreload" href="${chunks.find(s => s.startsWith("stories"))}" />
   </head>
   <body><script type="module" src="${bundle.entrypoints[0].importPath}"></script></body>
 </html>`;
