@@ -3,6 +3,8 @@ public/*
 !public/index.css
 !public/favicon.ico
 !public/robots.txt
+!public/manifest.webmanifest
+!public/img
 
 
 # dependencies

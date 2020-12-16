@@ -4,6 +4,7 @@ import replace from "@rollup/plugin-replace";
 import alias from "@rollup/plugin-alias";
 import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
+import { generateSW } from "rollup-plugin-workbox";
 import { terser } from "rollup-plugin-terser";
 import url from "url";
 const pkg = require("./package.json");
@@ -21,21 +22,13 @@ function template({ bundle }) {
     <meta name="description" content="Hacker News Clone built with Solid">
     <link rel="stylesheet" href="${publicPath}index.css" />
     <link rel="shortcut icon" href="${publicPath}favicon.ico" />
-    <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
       (function(l) {
         if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
+          var decoded = l.search.slice(1).split('&').map(function(s) {
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
@@ -44,8 +37,8 @@ function template({ bundle }) {
         }
       }(window.location))
     </script>
-    <!-- End Single Page Apps for GitHub Pages -->
-    <link rel="modulepreload" href="${chunks.find(s => s.startsWith("stories"))}" />
+    <link rel="manifest" href="${publicPath}manifest.webmanifest">
+    <link rel="modulepreload" href="${chunks.find((s) => s.startsWith("stories"))}" />
   </head>
   <body><script type="module" src="${bundle.entrypoints[0].importPath}"></script></body>
 </html>`;
@@ -67,7 +60,9 @@ export default (config) => {
           "!public/index.css",
           "!public/404.html",
           "!public/favicon.ico",
-          "!public/robots.txt"
+          "!public/robots.txt",
+          "!public/manifest.webmanifest",
+          "!public/img"
         ],
         watch: true
       }),
@@ -88,6 +83,10 @@ export default (config) => {
         inject: false,
         publicPath,
         template
+      }),
+      generateSW({
+        swDest: 'public/sw.js',
+        globDirectory: 'public/',
       }),
       process.env.production &&
         terser({
