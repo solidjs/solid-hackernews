@@ -13,7 +13,7 @@
         "type": "image/png"
     }
   ],
-  "start_url": "/solid-hackernews",
+  "start_url": "/solid-hackernews/",
   "background_color": "#f2f3f5",
   "display": "standalone",
   "theme_color": "#f60"
