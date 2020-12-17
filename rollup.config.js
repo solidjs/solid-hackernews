@@ -4,7 +4,6 @@ import replace from "@rollup/plugin-replace";
 import alias from "@rollup/plugin-alias";
 import html from "@open-wc/rollup-plugin-html";
 import del from "rollup-plugin-delete";
-import { generateSW } from "rollup-plugin-workbox";
 import { terser } from "rollup-plugin-terser";
 import url from "url";
 const pkg = require("./package.json");
@@ -62,7 +61,8 @@ export default (config) => {
           "!public/favicon.ico",
           "!public/robots.txt",
           "!public/manifest.webmanifest",
-          "!public/img"
+          "!public/img",
+          "!public/sw.js"
         ],
         watch: true
       }),
@@ -84,10 +84,10 @@ export default (config) => {
         publicPath,
         template
       }),
-      generateSW({
-        swDest: 'public/sw.js',
-        globDirectory: 'public/',
-      }),
+      // generateSW({
+      //   swDest: 'public/sw.js',
+      //   globDirectory: 'public/',
+      // }),
       process.env.production &&
         terser({
           output: { comments: false }

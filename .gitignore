@@ -5,6 +5,7 @@ public/*
 !public/robots.txt
 !public/manifest.webmanifest
 !public/img
+!public/sw.js
 
 
 # dependencies
