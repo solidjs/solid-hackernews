@@ -4,19 +4,19 @@ export default function Nav() {
   return (
     <header class="header">
       <nav class="inner">
-        <Link href="">
+        <Link href="/">
           <strong>HN</strong>
         </Link>
-        <Link href="new">
+        <Link href="/new">
           <strong>New</strong>
         </Link>
-        <Link href="show">
+        <Link href="/show">
           <strong>Show</strong>
         </Link>
-        <Link href="ask">
+        <Link href="/ask">
           <strong>Ask</strong>
         </Link>
-        <Link href="job">
+        <Link href="/job">
           <strong>Jobs</strong>
         </Link>
         <a class="github" href="http://github.com/ryansolid/solid" target="_blank" rel="noreferrer">

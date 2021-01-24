@@ -6,37 +6,37 @@ const Stories = lazy(() => import("./pages/stories.jsx"));
 
 export default [
   {
-    path: "",
+    path: "/",
     component: Stories,
     data: StoriesData
   },
   {
-    path: "new",
+    path: "/new",
     component: Stories,
     data: StoriesData
   },
   {
-    path: "show",
+    path: "/show",
     component: Stories,
     data: StoriesData
   },
   {
-    path: "ask",
+    path: "/ask",
     component: Stories,
     data: StoriesData
   },
   {
-    path: "job",
+    path: "/job",
     component: Stories,
     data: StoriesData
   },
   {
-    path: "users/:id",
+    path: "/users/:id",
     component: lazy(() => import("./pages/users/[id].jsx")),
     data: UserData
   },
   {
-    path: "stories/:id",
+    path: "/stories/:id",
     component: lazy(() => import("./pages/stories/[id].jsx")),
     data: StoryData
   },
