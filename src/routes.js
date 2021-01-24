@@ -2,7 +2,7 @@ import { lazy } from "solid-js";
 import StoriesData from "./pages/stories.data.js";
 import StoryData from "./pages/stories/[id].data.js";
 import UserData from "./pages/users/[id].data.js";
-const Stories = lazy(() => import("./pages/stories.js"));
+const Stories = lazy(() => import("./pages/stories.jsx"));
 
 export default [
   {
@@ -32,12 +32,12 @@ export default [
   },
   {
     path: "users/:id",
-    component: lazy(() => import("./pages/users/[id].js")),
+    component: lazy(() => import("./pages/users/[id].jsx")),
     data: UserData
   },
   {
     path: "stories/:id",
-    component: lazy(() => import("./pages/stories/[id].js")),
+    component: lazy(() => import("./pages/stories/[id].jsx")),
     data: StoryData
   },
   {

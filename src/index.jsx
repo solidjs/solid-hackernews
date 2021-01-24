@@ -1,3 +1,4 @@
+import "./assets/index.css";
 import { render } from "solid-js/web";
 import { Router, Route } from "solid-app-router";
 
@@ -15,12 +16,12 @@ render(
       </APIProvider>
     </Router>
   ),
-  document.body
+  document.getElementById("app")
 );
 
-if ("serviceWorker" in navigator) {
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
   // Use the window load event to keep the page load performant
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}sw.js`);
+    navigator.serviceWorker.register(`/sw.js`);
   });
 }

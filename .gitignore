@@ -1,12 +1,4 @@
-public/*
-!public/404.html
-!public/index.css
-!public/favicon.ico
-!public/robots.txt
-!public/manifest.webmanifest
-!public/img
-!public/sw.js
-
+dist
 
 # dependencies
 /node_modules
