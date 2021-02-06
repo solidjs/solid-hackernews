@@ -1,13 +1,4 @@
-import { createContext, useContext } from "solid-js";
-
-const APIContext = createContext();
-export function APIProvider(props) {
-  return <APIContext.Provider value={createAPI()}>{props.children}</APIContext.Provider>;
-}
-
-export function useAPI() {
-  return useContext(APIContext);
-}
+import { createResource } from "solid-js";
 
 const mapStories = {
   top: "news",
@@ -16,16 +7,19 @@ const mapStories = {
   ask: "ask",
   job: "jobs"
 };
-function createAPI() {
-  const cache = {};
 
-  const get = (path) =>
-    cache[path] ||
-    (cache[path] = fetch(`https://node-hnapi.herokuapp.com/${path}`).then((r) => r.json()));
+const cache = {};
 
-  return {
-    getItem: (id) => get(`item/${id}`),
-    getUser: (id) => get(`user/${id}`),
-    getStories: (type, page) => get(`${mapStories[type]}?page=${page}`)
-  };
+const get = (path) =>
+  cache[path] ||
+  (cache[path] = fetch(`https://node-hnapi.herokuapp.com/${path}`).then((r) => r.json()));
+
+export function useStory(id) {
+  return createResource(() => `item/${id()}`, get)[0];
+}
+export function useUser(id) {
+  return createResource(() => `user/${id()}`, get)[0];
+}
+export function useStories(type, page) {
+  return createResource(() => `${mapStories[type()]}?page=${page()}`, get)[0];
 }
