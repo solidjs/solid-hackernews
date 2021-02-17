@@ -1,6 +1,6 @@
 {
-  "name": "solid-hackernews",
-  "description": "A Solid Implementation of the Hacker News Example App",
+  "name": "vite-solid-hackernews",
+  "description": "A Solid Implementation of the Hacker News Example App with Vite",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
@@ -12,21 +12,26 @@
   "keywords": [
     "Solid",
     "Hacker News",
-    "example"
+    "example",
+    "vite"
   ],
   "author": "Ryan Carniato",
+  "contributors": [
+    {
+      "name": "Alexandre Mouton-Brady"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ryansolid/solid-hackernews/issues"
+    "url": "https://github.com/amoutonbrady/solid-hackernews/issues"
   },
-  "homepage": "https://ryansolid.github.io/solid-hackernews/",
+  "homepage": "https://github.com/amoutonbrady/solid-hackernews/",
   "dependencies": {
-    "solid-app-router": "0.0.19",
-    "solid-js": "0.23.11"
+    "solid-app-router": "0.0.23",
+    "solid-js": "0.24.7"
   },
   "devDependencies": {
-    "babel-preset-solid": "0.23.8",
-    "vite": "^2.0.0-beta.46",
-    "vite-plugin-solid": "^0.7.0"
+    "vite": "^2.0.1",
+    "vite-plugin-solid": "^1.0.0"
   }
 }

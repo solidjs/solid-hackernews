@@ -1,11 +1,7 @@
-import { createSignal, createComputed } from "solid-js";
-import { useAPI } from "../../lib/api";
+import { useStory } from "../../lib/api";
 
 export default function StoryData(props) {
-  const [story, setStory] = createSignal(),
-    { getItem } = useAPI();
-
-  createComputed(() => getItem(props.params.id).then(setStory));
+  const story = useStory(() => props.params.id);
 
   return {
     get story() {

@@ -1,5 +1,5 @@
 import { useRouter } from "solid-app-router";
-import { useAPI } from "../lib/api";
+import { useStories } from "../lib/api";
 import { createComputed, createMemo, createSignal } from "solid-js";
 
 const TYPES = ["new", "show", "ask", "job"];
@@ -15,12 +15,9 @@ function getType() {
 }
 
 export default function StoriesData(props) {
-  const [stories, setStories] = createSignal(),
-    { getStories } = useAPI(),
-    page = () => +(props.query?.page || 1),
-    type = getType();
-
-  createComputed(() => getStories(type(), page()).then(setStories));
+  const page = () => +(props.query?.page || 1),
+    type = getType(),
+    stories = useStories(type, page);
 
   return {
     get type() {
