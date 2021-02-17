@@ -12,7 +12,7 @@ const cache = {};
 
 const get = (path) =>
   cache[path] ||
-  (cache[path] = fetch(`https://node-hnapi.herokuapp.com/${path}`).then((r) => r.json()));
+  (cache[path] = fetch(path.startsWith("user") ? `https://hacker-news.firebaseio.com/v0/${path}.json` : `https://node-hnapi.herokuapp.com/${path}`).then((r) => r.json()));
 
 export function useStory(id) {
   return createResource(() => `item/${id()}`, get)[0];
