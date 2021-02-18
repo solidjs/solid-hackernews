@@ -23,7 +23,7 @@ export default function Stories(props) {
         </Show>
         <span>page {props.page}</span>
         <Show
-          when={props.stories?.length === 30}
+          when={props.stories?.length >= 28}
           fallback={
             <span class="page-link" aria-hidden="true">
               more &gt;
