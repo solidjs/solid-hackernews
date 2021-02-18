@@ -46,7 +46,7 @@ function template({ bundle }) {
 export default (config) => {
   config.configDeploy && (publicPath = url.parse(pkg.homepage).pathname);
   return {
-    input: "src/index.js",
+    input: "src/index.jsx",
     output: {
       dir: "public",
       format: "esm"
@@ -70,7 +70,7 @@ export default (config) => {
         alias({
           entries: [{ find: /^solid-js$/, replacement: "solid-js/dev" }]
         }),
-      resolve(),
+      resolve({ extensions: [".jsx", ".js"]}),
       babel({
         babelHelpers: "bundled",
         presets: ["solid"],
