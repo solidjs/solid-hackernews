@@ -1,7 +1,16 @@
 import { Link } from "solid-app-router";
+import { Component, For, Show } from "solid-js";
+
+import type { IStory } from "../types";
 import Story from "../components/story";
 
-export default function Stories(props) {
+interface Props {
+  page: number;
+  type: string;
+  stories: IStory[];
+}
+
+const Stories: Component<Props> = (props) => {
   return (
     <div class="news-view">
       <div class="news-list-nav">
@@ -48,4 +57,6 @@ export default function Stories(props) {
       </main>
     </div>
   );
-}
+};
+
+export default Stories;

@@ -1,4 +1,14 @@
-export default function User(props) {
+import { Component, Show } from "solid-js";
+
+export interface IUser {
+  error: string;
+  id: string;
+  created: string;
+  karma: number;
+  about: string;
+}
+
+const User: Component<{ user: IUser }> = (props) => {
   return (
     <div class="user-view">
       <Show when={props.user}>
@@ -23,4 +33,6 @@ export default function User(props) {
       </Show>
     </div>
   );
-}
+};
+
+export default User;

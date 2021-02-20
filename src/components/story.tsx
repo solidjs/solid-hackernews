@@ -1,6 +1,9 @@
 import { Link } from "solid-app-router";
+import { Component, Show } from "solid-js";
 
-export default function Story(props) {
+import type { IStory } from "../types";
+
+const Story: Component<{ story: IStory }> = (props) => {
   return (
     <li class="news-item">
       <span class="score">{props.story.points}</span>
@@ -34,4 +37,6 @@ export default function Story(props) {
       </Show>
     </li>
   );
-}
+};
+
+export default Story;

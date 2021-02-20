@@ -1,6 +1,6 @@
 import { Link } from "solid-app-router";
 
-export default function Nav() {
+function Nav() {
   return (
     <header class="header">
       <nav class="inner">
@@ -26,3 +26,5 @@ export default function Nav() {
     </header>
   );
 }
+
+export default Nav;

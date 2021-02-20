@@ -1,10 +1,13 @@
-import { createSignal } from "solid-js";
 import { Link } from "solid-app-router";
+import { Component, createSignal, For, Show } from "solid-js";
 
-const pluralize = (n) => n + (n === 1 ? " reply" : " replies");
+import type { IComment } from "../types";
 
-export default function Comment(props) {
+const pluralize = (n: number) => n + (n === 1 ? " reply" : " replies");
+
+const Comment: Component<{ comment: IComment }> = (props) => {
   const [open, setOpen] = createSignal(true);
+
   return (
     <li class="comment">
       <div class="by">
@@ -26,4 +29,6 @@ export default function Comment(props) {
       </Show>
     </li>
   );
-}
+};
+
+export default Comment;

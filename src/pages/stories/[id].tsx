@@ -1,7 +1,10 @@
 import { Link } from "solid-app-router";
+import { Component, For, Show } from "solid-js";
+
+import type { IStory } from "../../types";
 import Comment from "../../components/comment";
 
-export default function Story(props) {
+const Story: Component<{ story: IStory }> = (props) => {
   return (
     <Show when={props.story}>
       <div class="item-view">
@@ -31,4 +34,6 @@ export default function Story(props) {
       </div>
     </Show>
   );
-}
+};
+
+export default Story;

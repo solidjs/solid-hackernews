@@ -1,10 +1,11 @@
 import { lazy } from "solid-js";
-import StoriesData from "./pages/stories.data.js";
-import StoryData from "./pages/stories/[id].data.js";
-import UserData from "./pages/users/[id].data.js";
-const Stories = lazy(() => import("./pages/stories.jsx"));
+import type { RouteDefinition } from "solid-app-router";
+import StoriesData from "./pages/stories.data";
+import StoryData from "./pages/stories/[id].data";
+import UserData from "./pages/users/[id].data";
+const Stories = lazy(() => import("./pages/stories"));
 
-export default [
+export const routes: RouteDefinition[] = [
   {
     path: "/",
     component: Stories,
@@ -32,12 +33,12 @@ export default [
   },
   {
     path: "/users/:id",
-    component: lazy(() => import("./pages/users/[id].jsx")),
+    component: lazy(() => import("./pages/users/[id]")),
     data: UserData
   },
   {
     path: "/stories/:id",
-    component: lazy(() => import("./pages/stories/[id].jsx")),
+    component: lazy(() => import("./pages/stories/[id]")),
     data: StoryData
   },
   {

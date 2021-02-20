@@ -1,16 +1,19 @@
 import "./assets/index.css";
+
 import { render } from "solid-js/web";
 import { Router, Route } from "solid-app-router";
 
 import Nav from "./components/nav";
-
-import routes from "./routes";
+import { routes } from "./routes";
 
 render(
   () => (
     <Router routes={routes}>
       <Nav />
-      <Route class="view" />
+      <Route
+        // @ts-ignore
+        class="view"
+      />
     </Router>
   ),
   document.getElementById("app")
