@@ -8,7 +8,7 @@ import { terser } from "rollup-plugin-terser";
 import url from "url";
 const pkg = require("./package.json");
 
-let publicPath = "/";
+let publicPath = "";
 
 function template({ bundle }) {
   const chunks = Object.keys(bundle.bundle);
@@ -19,8 +19,8 @@ function template({ bundle }) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Hacker News Clone built with Solid">
-    <link rel="stylesheet" href="${publicPath}index.css" />
-    <link rel="shortcut icon" href="${publicPath}favicon.ico" />
+    <link rel="stylesheet" href="${publicPath}/index.css" />
+    <link rel="shortcut icon" href="${publicPath}/favicon.ico" />
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // MIT License
@@ -36,10 +36,10 @@ function template({ bundle }) {
         }
       }(window.location))
     </script>
-    <link rel="manifest" href="${publicPath}manifest.webmanifest">
-    <link rel="modulepreload" href="${chunks.find((s) => s.startsWith("stories"))}" />
+    <link rel="manifest" href="${publicPath}/manifest.webmanifest">
+    <link rel="modulepreload" href="${chunks.find((s) => s.startsWith("[...stories]"))}" />
   </head>
-  <body><script type="module" src="${bundle.entrypoints[0].importPath}"></script></body>
+  <body><script type="module" src="${publicPath + bundle.entrypoints[0].importPath.slice(1)}"></script></body>
 </html>`;
 }
 

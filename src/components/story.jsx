@@ -7,7 +7,7 @@ export default function Story(props) {
       <span class="title">
         <Show
           when={props.story.url}
-          fallback={<Link href={`item/${props.story.id}`}>{props.story.title}</Link>}
+          fallback={<Link href={`/item/${props.story.id}`}>{props.story.title}</Link>}
         >
           <a href={props.story.url} target="_blank" rel="noreferrer">
             {props.story.title}
@@ -19,11 +19,11 @@ export default function Story(props) {
       <span class="meta">
         <Show
           when={props.story.type !== "job"}
-          fallback={<Link href={`stories/${props.story.id}`}>{props.story.time_ago}</Link>}
+          fallback={<Link href={`/stories/${props.story.id}`}>{props.story.time_ago}</Link>}
         >
-          by <Link href={`users/${props.story.user}`}>{props.story.user}</Link>{" "}
+          by <Link href={`/users/${props.story.user}`}>{props.story.user}</Link>{" "}
           {props.story.time_ago} |{" "}
-          <Link href={`stories/${props.story.id}`}>
+          <Link href={`/stories/${props.story.id}`}>
             {props.story.comments_count ? `${props.story.comments_count} comments` : "discuss"}
           </Link>
         </Show>

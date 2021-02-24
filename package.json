@@ -24,10 +24,10 @@
   "bugs": {
     "url": "https://github.com/ryansolid/solid-hackernews/issues"
   },
-  "homepage": "https://ryansolid.github.io/solid-hackernews/",
+  "homepage": "https://ryansolid.github.io/solid-hackernews",
   "dependencies": {
     "solid-js": "0.24.7",
-    "solid-app-router": "0.0.23"
+    "solid-app-router": "0.0.24"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
