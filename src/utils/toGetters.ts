@@ -4,8 +4,7 @@ export function toGetters<
     [key in keyof Initial]: ReturnType<Initial[key]>;
   }
 >(getters: Initial): Getters {
-  return Object.entries(getters).reduce((object, [key, getter]) => {
-    Object.defineProperty(object, key, { get: () => getter() });
-    return object;
-  }, {}) as Getters;
+  return new Proxy(getters as any, {
+    get: (...args) => Reflect.get(...args)()
+  }) as Getters;
 }

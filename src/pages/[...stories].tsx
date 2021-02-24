@@ -24,7 +24,7 @@ const Stories: Component<Props> = (props) => {
         >
           <Link
             class="page-link"
-            href={`${props.type}?page=${props.page - 1}`}
+            href={`/${props.type}?page=${props.page - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
@@ -41,7 +41,7 @@ const Stories: Component<Props> = (props) => {
         >
           <Link
             class="page-link"
-            href={`${props.type}?page=${props.page + 1}`}
+            href={`/${props.type}?page=${props.page + 1}`}
             aria-label="Next Page"
           >
             more {">"}
