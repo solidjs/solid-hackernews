@@ -39,7 +39,7 @@ function template({ bundle }) {
     <link rel="manifest" href="${publicPath}/manifest.webmanifest">
     <link rel="modulepreload" href="${chunks.find((s) => s.startsWith("[...stories]"))}" />
   </head>
-  <body><script type="module" src="${publicPath + bundle.entrypoints[0].importPath.slice(1)}"></script></body>
+  <body><script type="module" src="${bundle.entrypoints[0].importPath.slice(1)}"></script></body>
 </html>`;
 }
 
