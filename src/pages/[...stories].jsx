@@ -15,7 +15,7 @@ export default function Stories(props) {
         >
           <Link
             class="page-link"
-            href={`${props.type}?page=${props.page - 1}`}
+            href={`/${props.type}?page=${props.page - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
@@ -32,7 +32,7 @@ export default function Stories(props) {
         >
           <Link
             class="page-link"
-            href={`${props.type}?page=${props.page + 1}`}
+            href={`/${props.type}?page=${props.page + 1}`}
             aria-label="Next Page"
           >
             more {">"}
