@@ -1,7 +1,7 @@
 import { useStories } from "../lib/api";
 
 export default function StoriesData(props) {
-  const page = () => +(props.query?.page || 1),
+  const page = () => +(props.query.page || 1),
     type = () => props.params.stories || "top",
     stories = useStories(type, page);
 
