@@ -8,14 +8,14 @@ import { Suspense } from "solid-js";
 
 export default function App(props: { initialURL?: string }) {
   return (
-    <Suspense fallback={<p>Loading data...</p>}>
-      <Router routes={routes} initialURL={props.initialURL}>
-        <Nav />
+    <Router routes={routes} initialURL={props.initialURL}>
+      <Nav />
+      <Suspense fallback={<p>Loading data...</p>}>
         <Route
           // @ts-ignore
           class="view"
         />
-      </Router>
-    </Suspense>
+      </Suspense>
+    </Router>
   );
 }
