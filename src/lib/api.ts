@@ -1,5 +1,5 @@
 import { createResource } from "solid-js";
-import { IUser } from "../pages/users/[id]";
+import { isServer } from "solid-js/web";
 
 const mapStories = {
   top: "news",
@@ -18,7 +18,10 @@ async function get(path: string) {
   const isUser = path.startsWith("user");
 
   if (!cache.has(path)) {
-    const content = fetch(isUser ? user(path) : story(path)).then((r) => r.json());
+    const url = isUser ? user(path) : story(path);
+    const headers = isServer ? { "User-Agent": "chrome" } : {};
+
+    const content = fetch(url, { headers }).then((r) => r.json());
     cache.set(path, content);
   }
 
