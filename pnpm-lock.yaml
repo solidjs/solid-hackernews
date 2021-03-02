@@ -12,7 +12,7 @@ devDependencies:
   jiti: 1.4.0
   rollup-route-manifest: 1.0.0
   vite: 2.0.4
-  vite-plugin-solid: 1.2.0
+  vite-plugin-solid: 1.2.1
 lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.12.13:
@@ -28,11 +28,11 @@ packages:
   /@babel/core/7.13.8:
     dependencies:
       '@babel/code-frame': 7.12.13
-      '@babel/generator': 7.13.0
+      '@babel/generator': 7.13.9
       '@babel/helper-compilation-targets': 7.13.8_@babel+core@7.13.8
       '@babel/helper-module-transforms': 7.13.0
       '@babel/helpers': 7.13.0
-      '@babel/parser': 7.13.4
+      '@babel/parser': 7.13.9
       '@babel/template': 7.12.13
       '@babel/traverse': 7.13.0
       '@babel/types': 7.13.0
@@ -48,14 +48,14 @@ packages:
       node: '>=6.9.0'
     resolution:
       integrity: sha512-oYapIySGw1zGhEFRd6lzWNLWFX2s5dA/jm+Pw/+59ZdXtjyIuwlXbrId22Md0rgZVop+aVoqow2riXhBLNyuQg==
-  /@babel/generator/7.13.0:
+  /@babel/generator/7.13.9:
     dependencies:
       '@babel/types': 7.13.0
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
     resolution:
-      integrity: sha512-zBZfgvBB/ywjx0Rgc2+BwoH/3H+lDtlgD4hBOpEv5LxRnYsm/753iRuLepqnYlynpjC3AdQxtxsoeHJoEEwOAw==
+      integrity: sha512-mHOOmY0Axl/JCTkxTU6Lf5sWOg/v8nUa+Xkt4zMTftX0wqmb6Sh7J8gvcehBw7q0AhrhAR+FDacKjCZ2X8K+Sw==
   /@babel/helper-compilation-targets/7.13.8_@babel+core@7.13.8:
     dependencies:
       '@babel/compat-data': 7.13.8
@@ -176,13 +176,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-4vrIhfJyfNf+lCtXC2ck1rKSzDwciqF7IWFhXXrSOUC2O5DrVp+w4c6ed4AllTxhTkUP5x2tYj41VaxdVMMRDw==
-  /@babel/parser/7.13.4:
+  /@babel/parser/7.13.9:
     dev: true
     engines:
       node: '>=6.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-uvoOulWHhI+0+1f9L4BoozY7U5cIkZ9PgJqvb041d6vypgUmtVPG4vmGm4pSggjl8BELzvHyUeJSUyEMY6b+qA==
+      integrity: sha512-nEUfRiARCcaVo3ny3ZQjURjHQZUo/JkEw7rLlSZy/psWGnvwXFtPcr6jb7Yb41DVW5LTe6KRq9LGleRNsg1Frw==
   /@babel/plugin-syntax-jsx/7.12.13_@babel+core@7.13.8:
     dependencies:
       '@babel/core': 7.13.8
@@ -226,7 +226,7 @@ packages:
   /@babel/template/7.12.13:
     dependencies:
       '@babel/code-frame': 7.12.13
-      '@babel/parser': 7.13.4
+      '@babel/parser': 7.13.9
       '@babel/types': 7.13.0
     dev: true
     resolution:
@@ -234,10 +234,10 @@ packages:
   /@babel/traverse/7.13.0:
     dependencies:
       '@babel/code-frame': 7.12.13
-      '@babel/generator': 7.13.0
+      '@babel/generator': 7.13.9
       '@babel/helper-function-name': 7.12.13
       '@babel/helper-split-export-declaration': 7.12.13
-      '@babel/parser': 7.13.4
+      '@babel/parser': 7.13.9
       '@babel/types': 7.13.0
       debug: 4.3.1
       globals: 11.12.0
@@ -413,9 +413,9 @@ packages:
       integrity: sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
   /browserslist/4.16.3:
     dependencies:
-      caniuse-lite: 1.0.30001192
+      caniuse-lite: 1.0.30001194
       colorette: 1.2.2
-      electron-to-chromium: 1.3.675
+      electron-to-chromium: 1.3.677
       escalade: 3.1.1
       node-releases: 1.1.71
     dev: true
@@ -436,10 +436,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
-  /caniuse-lite/1.0.30001192:
+  /caniuse-lite/1.0.30001194:
     dev: true
     resolution:
-      integrity: sha512-63OrUnwJj5T1rUmoyqYTdRWBqFFxZFlyZnRRjDR8NSUQFB6A+j/uBORU/SyJ5WzDLg4SPiZH40hQCBNdZ/jmAw==
+      integrity: sha512-iDUOH+oFeBYk5XawYsPtsx/8fFpndAPUQJC7gBTfxHM8xw5nOZv7ceAD4frS1MKCLUac7QL5wdAJiFQlDRjXlA==
   /chalk/2.4.2:
     dependencies:
       ansi-styles: 3.2.1
@@ -560,10 +560,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.3.675:
+  /electron-to-chromium/1.3.677:
     dev: true
     resolution:
-      integrity: sha512-GEQw+6dNWjueXGkGfjgm7dAMtXfEqrfDG3uWcZdeaD4cZ3dKYdPRQVruVXQRXtPLtOr5GNVVlNLRMChOZ611pQ==
+      integrity: sha512-Tcmk+oKQgpjcM+KYanlkd76ZtpzalkpUULnlJDP6vjHtR7UU564IM9Qv5DxqHZNBQjzXm6mkn7Y8bw2OoE3FmQ==
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -1223,14 +1223,14 @@ packages:
   /solid-js/0.24.10:
     resolution:
       integrity: sha512-Nes+5kARPtan6M7fOZYZKiUdVd5iJbh1N4HndPuIVoWLulftykqwDyW3/FdrKfkuE70rv1uJdTDdLSVBSkeHWA==
-  /solid-refresh/0.0.3_solid-js@0.24.10:
+  /solid-refresh/0.0.4_solid-js@0.24.10:
     dependencies:
       solid-js: 0.24.10
     dev: true
     peerDependencies:
       solid-js: ^0.24.0
     resolution:
-      integrity: sha512-RqUq4d4IMPel8mHwy4WA5RMpymNtIX6Ux5tlD048KRV64b82/dOoNEbcrRf3cjbjnqlNbYA2dQR30mQoZMYZAw==
+      integrity: sha512-v/m2J8q7Xt6AJviUQNoV9YAI28/+kZspQGb5T4fC+Q/kz7Ko6z0/GLDipuRfLpZUX+HcQn4s3FeBqsZhAj4JFg==
   /sonic-boom/1.3.2:
     dependencies:
       atomic-sleep: 1.0.0
@@ -1329,18 +1329,18 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
-  /vite-plugin-solid/1.2.0:
+  /vite-plugin-solid/1.2.1:
     dependencies:
       '@babel/core': 7.13.8
       '@babel/preset-typescript': 7.13.0_@babel+core@7.13.8
       babel-preset-solid: 0.24.9_@babel+core@7.13.8
       resolve.exports: 1.0.2
       solid-js: 0.24.10
-      solid-refresh: 0.0.3_solid-js@0.24.10
+      solid-refresh: 0.0.4_solid-js@0.24.10
       vite: 2.0.4
     dev: true
     resolution:
-      integrity: sha512-3qBIdd4zGKgsy4eL8U9okQvDX28j40c9MEyxBwK9sYQRrveEr7jDZq+cwWYNczr5uV1VPV6b02OCpuBgPedpbw==
+      integrity: sha512-ExLbUIFWtmUMgfqxD9mk2u7u3my4X3xaLtXx2pCXKupOj+CTqohYoMtPQSvITgI0qzZxuSMWfavfVYT6ZBi4Mg==
   /vite/2.0.4:
     dependencies:
       esbuild: 0.8.54
@@ -1372,4 +1372,4 @@ specifiers:
   solid-app-router: 0.0.29
   solid-js: 0.24.10
   vite: ^2.0.4
-  vite-plugin-solid: ^1.2.0
+  vite-plugin-solid: ^1.2.1
