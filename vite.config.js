@@ -6,6 +6,13 @@ import path from "path";
 export default defineConfig({
   plugins: [
     solid({ ssr: true }),
+    {
+      name: "html-async",
+      enforce: "post",
+      transformIndexHtml(html) {
+        return html.replace('type="module"', 'type="module" async');
+      }
+    },
     manifest({
       inline: false,
       merge: false,
