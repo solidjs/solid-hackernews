@@ -4,6 +4,6 @@ import fetch from "node-fetch";
 
 globalThis.fetch = fetch;
 
-export function render(initialURL: string) {
-  return renderToNodeStream(() => <App initialURL={initialURL} />);
+export function render(initialURL: string, ctx: { router?: any }) {
+  return renderToNodeStream(() => <App initialURL={initialURL} out={ctx} />);
 }

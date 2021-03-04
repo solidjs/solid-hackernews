@@ -9,12 +9,11 @@ export default defineConfig({
     manifest({
       inline: false,
       merge: false,
-      publicPath: "/assets/",
+      publicPath: "/",
       routes: (file) => {
         file = file.replace(path.join(__dirname, "src"), "").replace(/\.[tj]sx?$/, "");
         if (!file.includes("/pages/")) return "*"; // commons
-        let name = "/" + file.replace("/pages/", "").toLowerCase();
-        return name === "/home" ? "/" : name;
+        return "/" + file.replace("/pages/", "").toLowerCase();
       }
     })
   ],

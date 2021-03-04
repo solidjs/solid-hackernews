@@ -2,14 +2,16 @@ import path from "path";
 import express from "express";
 import { readFileSync } from "fs";
 import { ViteDevServer } from "vite";
+import { preload } from "./src/utils/preload";
 import { renderToNodeStream } from "solid-js/web";
 
 async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV === "production") {
   const resolve = (p: string) => path.resolve(__dirname, p);
   const indexProd = isProd ? readFileSync(resolve("dist/client/index.html"), "utf-8") : "";
+  const manifest = isProd ? JSON.parse(readFileSync(resolve("dist/client/rmanifest.json"), "utf-8")) : "";
 
   const app = express();
-  const manifest = {};
+  const ctx: { router?: any } = {};
 
   let vite: ViteDevServer;
 
@@ -34,7 +36,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
       if (url === "/favicon.ico") return res.send("");
 
       let template: string;
-      let render: (ur: string, manifest: any) => ReturnType<typeof renderToNodeStream>;
+      let render: (ur: string, ctx: any) => ReturnType<typeof renderToNodeStream>;
 
       if (!isProd) {
         // always read fresh template in dev
@@ -46,10 +48,11 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
         render = require("./dist/server/entry-server.js").render;
       }
 
-      const { stream, script } = render(url, manifest);
+      const { stream, script } = render(url, ctx);
 
       const [htmlStart, htmlEnd] = template
         .replace(`<!--app-head-->`, script)
+        .replace(`<!--app-preload-->`, isProd ? preload(ctx.router[0].current, manifest) || "" :  manifest)
         .split(`<!--app-html-->`);
 
       res.status(200).set({ "content-type": "text/html" });
