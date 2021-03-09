@@ -1,0 +1,9 @@
+name = "hackernews"
+type = "javascript"
+account_id = "bec77b03b1fb3338a921fd1c11a97aaa"
+workers_dev = true
+route = ""
+zone_id = ""
+[site]
+entry-point = "./"
+bucket= "./dist/client"
