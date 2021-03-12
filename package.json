@@ -52,6 +52,6 @@
     "rollup-route-manifest": "^1.0.0",
     "rollup-pluginutils": "^2.8.2",
     "vite": "^2.0.5",
-    "vite-plugin-solid": "^1.2.2"
+    "vite-plugin-solid": "^1.3.0"
   }
 }

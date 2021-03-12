@@ -10,7 +10,7 @@ export default function App(props: { initialURL?: string, out?: any }) {
   return (
     <Router routes={routes} initialURL={props.initialURL} out={props.out}>
       <Nav />
-      <Suspense fallback={<p>Loading data...</p>}>
+      <Suspense fallback={<div class="news-list-nav">Loading...</div>}>
         <Route
           // @ts-ignore
           class="view"
