@@ -33,7 +33,7 @@
   "dependencies": {
     "serve-static": "^1.14.1",
     "solid-app-router": "0.0.32",
-    "solid-js": "0.24.13"
+    "solid-js": "0.24.14"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.9",
