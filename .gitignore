@@ -1,4 +1,6 @@
 dist
+worker
+.solid
 
 # dependencies
 /node_modules
@@ -10,7 +12,9 @@ dist
 *.launch
 .settings/
 
+# Temp
+gitignore
 
-#System Files
+# System Files
 .DS_Store
 Thumbs.db

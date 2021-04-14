@@ -1,17 +1,32 @@
-# Solid Hacker News
+# SolidStart
 
-Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). Uses Solid and Solid App Router, vite & SSR.
+Everything you need to build a Solid project, powered by [`solid-start`](https://github.com/ryansolid/solid-start/tree/master/packages/solid-start);
 
-You can view it [here](https://hackernews.ryansolid.workers.dev/).
+## Creating a project
 
-## Testing Locally:
+```bash
+# create a new project in the current directory
+npm init solid@next
 
-First, you'll need to clone this repo, then cd into the `solid-hackernews` folder
+# create a new project in my-app
+npm init solid@next my-app
+```
 
-Then, run `pnpm install` to install all dependencies
+> Note: the `@next` is temporary
 
-Lastly, run `pnpm dev` and the web-app will open in your default browser at `http://localhost:3000/` in dev mode
+## Developing
 
-Run `pnpm build && pnpm serve` and the web-app will be built in a `dist` folder and serve on localhost:3000
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-Happy Hacking!
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+Solid apps are built with _adapters_, which optimise your project for deployment to different environments.
+
+By default, `npm run build` will generate a Node app that you can run with `node build`. To use a different adapter, add it to the `devDependencies` in `package.json` and specify in your `vite.config.js`.

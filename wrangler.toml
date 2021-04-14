@@ -6,4 +6,4 @@ route = ""
 zone_id = ""
 [site]
 entry-point = "./"
-bucket= "./dist/client"
+bucket= "./dist"
