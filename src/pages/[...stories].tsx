@@ -17,7 +17,7 @@ const Stories: Component<Props> = (props) => {
         <Show
           when={props.page > 1}
           fallback={
-            <span class="page-link disabled" aria-hidden="true">
+            <span class="page-link disabled" aria-disabled="true">
               &lt; prev
             </span>
           }
@@ -34,7 +34,7 @@ const Stories: Component<Props> = (props) => {
         <Show
           when={props.stories?.length === 30}
           fallback={
-            <span class="page-link" aria-hidden="true">
+            <span class="page-link" aria-disabled="true">
               more &gt;
             </span>
           }
