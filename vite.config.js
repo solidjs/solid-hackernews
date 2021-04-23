@@ -7,5 +7,10 @@ export default defineConfig({
   build: {
     polyfillDynamicImport: false,
     target: "esnext",
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
 });
