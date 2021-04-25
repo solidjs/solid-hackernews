@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryansolid/solid-hackernews.git"
+    "url": "git+https://github.com/solidui/solid-hackernews.git"
   },
   "keywords": [
     "Solid",
@@ -22,9 +22,9 @@
   "author": "Ryan Carniato",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ryansolid/solid-hackernews/issues"
+    "url": "https://github.com/solidui/solid-hackernews/issues"
   },
-  "homepage": "https://ryansolid.github.io/solid-hackernews",
+  "homepage": "https://solidui.github.io/solid-hackernews",
   "dependencies": {
     "solid-js": "0.24.7",
     "solid-app-router": "0.0.27"
