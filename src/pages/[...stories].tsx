@@ -32,9 +32,9 @@ const Stories: Component<Props> = (props) => {
         </Show>
         <span>page {props.page}</span>
         <Show
-          when={props.stories?.length === 30}
+          when={props.stories?.length >= 29}
           fallback={
-            <span class="page-link" aria-disabled="true">
+            <span class="page-link disabled" aria-disabled="true">
               more &gt;
             </span>
           }
