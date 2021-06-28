@@ -68,7 +68,7 @@ export default (config) => {
       }),
       !process.env.production &&
         alias({
-          entries: [{ find: /^solid-js$/, replacement: "solid-js/dev" }]
+          entries: [{ find: /^solid-js$/, replacement: "solid-js/dist/dev.js" }]
         }),
       resolve({ extensions: [".jsx", ".js"]}),
       babel({

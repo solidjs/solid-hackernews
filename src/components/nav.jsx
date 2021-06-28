@@ -19,7 +19,7 @@ export default function Nav() {
         <Link href="/job">
           <strong>Jobs</strong>
         </Link>
-        <a class="github" href="http://github.com/ryansolid/solid" target="_blank" rel="noreferrer">
+        <a class="github" href="http://github.com/solidjs/solid" target="_blank" rel="noreferrer">
           Built with Solid
         </a>
       </nav>
