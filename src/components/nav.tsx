@@ -2,7 +2,7 @@ import { Link } from "solid-app-router";
 
 function Nav() {
   return (
-    <header class="header">
+    <header class="header" $ServerOnly>
       <nav class="inner">
         <Link href="/">
           <strong>HN</strong>

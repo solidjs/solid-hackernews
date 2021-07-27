@@ -7,3 +7,6 @@ zone_id = ""
 [site]
 entry-point = "./"
 bucket= "./dist"
+[build]
+command = ""
+upload.format = "service-worker"

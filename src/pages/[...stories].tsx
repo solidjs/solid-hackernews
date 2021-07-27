@@ -1,47 +1,48 @@
-import { Link } from "solid-app-router";
+import { Link, useData } from "solid-app-router";
 import { Component, For, Show } from "solid-js";
 
 import type { IStory } from "../types";
 import Story from "../components/story";
 
-interface Props {
-  page: number;
-  type: string;
-  stories: IStory[];
+interface StoriesData {
+  page: () => number;
+  type: () => string;
+  stories: () => IStory[];
 }
 
-const Stories: Component<Props> = (props) => {
+const Stories: Component = () => {
+  const { page, type, stories } = useData<StoriesData>();
   return (
     <div class="news-view">
       <div class="news-list-nav">
         <Show
-          when={props.page > 1}
+          when={page() > 1}
           fallback={
             <span class="page-link disabled" aria-disabled="true">
-              &lt; prev
+              {"<"} prev
             </span>
           }
         >
           <Link
             class="page-link"
-            href={`/${props.type}?page=${props.page - 1}`}
+            href={`/${type()}?page=${page() - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
           </Link>
         </Show>
-        <span>page {props.page}</span>
+        <span>page {page()}</span>
         <Show
-          when={props.stories?.length >= 29}
+          when={stories() && stories().length >= 29}
           fallback={
             <span class="page-link disabled" aria-disabled="true">
-              more &gt;
+              more {">"}
             </span>
           }
         >
           <Link
             class="page-link"
-            href={`/${props.type}?page=${props.page + 1}`}
+            href={`/${type()}?page=${page() + 1}`}
             aria-label="Next Page"
           >
             more {">"}
@@ -49,9 +50,9 @@ const Stories: Component<Props> = (props) => {
         </Show>
       </div>
       <main class="news-list">
-        <Show when={props.stories}>
+        <Show when={stories()}>
           <ul>
-            <For each={props.stories}>{(story) => <Story story={story} />}</For>
+            <For each={stories()}>{(story) => <Story story={story} />}</For>
           </ul>
         </Show>
       </main>
