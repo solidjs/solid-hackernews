@@ -5,19 +5,19 @@ function Nav() {
     <header class="header" $ServerOnly>
       <nav class="inner">
         <Link href="/">
-          <strong>HN</strong>
+          <strong $ServerOnly>HN</strong>
         </Link>
         <Link href="/new">
-          <strong>New</strong>
+          <strong $ServerOnly>New</strong>
         </Link>
         <Link href="/show">
-          <strong>Show</strong>
+          <strong $ServerOnly>Show</strong>
         </Link>
         <Link href="/ask">
-          <strong>Ask</strong>
+          <strong $ServerOnly>Ask</strong>
         </Link>
         <Link href="/job">
-          <strong>Jobs</strong>
+          <strong $ServerOnly>Jobs</strong>
         </Link>
         <a class="github" href="http://github.com/solidjs/solid" target="_blank" rel="noreferrer">
           Built with Solid
