@@ -1,9 +1,9 @@
+import { createResource } from "solid-js";
 import { RouteDataFunc } from "solid-app-router";
-import { useUser } from "../../lib/api";
+import fetchAPI from "../../lib/api";
 
 const UserData: RouteDataFunc = (props) => {
-  const [user] = useUser(() => props.params.id);
-
+  const [user] = createResource(() => `user/${props.params.id}`, fetchAPI);
   return user;
 };
 
