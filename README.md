@@ -1,6 +1,6 @@
 # Solid Hacker News
 
-Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). It is powered by [`solid-start`](https://github.com/solidjs/solid-start/tree/master/packages/solid-start);
+Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). It is powered by [`solid-start`](https://github.com/solidjs/solid-start);
 
 You can view it [here](https://solid-hackernews.vercel.app/).
 
