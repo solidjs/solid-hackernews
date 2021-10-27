@@ -11,7 +11,7 @@
     "solid-app-router": "^0.1.4",
     "solid-js": "^1.0.7",
     "solid-start": "next",
-    "solid-start-cloudflare-workers": "next",
+    "solid-start-vercel-edge": "next",
     "typescript": "^4.3.5",
     "vite": "2.4.3"
   },
