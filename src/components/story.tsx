@@ -9,7 +9,7 @@ const Story: Component<{ story: IStory }> = (props) => {
       <span class="score">{props.story.points}</span>
       <span class="title">
         <Show
-          when={props.story.url && !props.story.url?.startsWith?.('item?id=')}
+          when={props.story.url && !props.story.url.startsWith('item?id=')}
           fallback={<Link href={`/item/${props.story.id}`}>{props.story.title}</Link>}
         >
           <a href={props.story.url} target="_blank" rel="noreferrer">
