@@ -8,8 +8,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "devDependencies": {
-    "solid-app-router": "^0.1.4",
-    "solid-js": "^1.0.7",
+    "solid-app-router": "^0.1.10",
+    "solid-js": "^1.2.3",
     "solid-meta": "^0.27.2",
     "solid-start": "next",
     "solid-start-netlify": "next",
