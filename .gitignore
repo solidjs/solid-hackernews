@@ -1,6 +1,9 @@
 dist
 worker
 .solid
+.vercel
+.output
+.netlify
 
 # dependencies
 /node_modules
