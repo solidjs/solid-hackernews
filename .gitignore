@@ -7,6 +7,8 @@ public/*
 !public/img
 !public/sw.js
 
+wrangler.toml
+dist
 
 # dependencies
 /node_modules

@@ -1,25 +1,9 @@
-import { createResource } from "solid-js";
+const story = (path) => `https://node-hnapi.herokuapp.com/${path}`;
+const user = (path) =>
+  `https://hacker-news.firebaseio.com/v0/${path}.json`;
 
-const mapStories = {
-  top: "news",
-  new: "newest",
-  show: "show",
-  ask: "ask",
-  job: "jobs"
-};
+export default function fetchAPI(path) {
+  const url = path.startsWith("user") ? user(path) : story(path);
 
-const cache = {};
-
-const get = (path) =>
-  cache[path] ||
-  (cache[path] = fetch(path.startsWith("user") ? `https://hacker-news.firebaseio.com/v0/${path}.json` : `https://node-hnapi.herokuapp.com/${path}`).then((r) => r.json()));
-
-export function useStory(id) {
-  return createResource(() => `item/${id()}`, get)[0];
-}
-export function useUser(id) {
-  return createResource(() => `user/${id()}`, get)[0];
-}
-export function useStories(type, page) {
-  return createResource(() => `${mapStories[type()]}?page=${page()}`, get)[0];
+  return fetch(url).then((r) => r.json());
 }

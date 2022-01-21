@@ -1,11 +1,8 @@
-import { useUser } from "../../lib/api";
+import { createResource } from "solid-js";
+import fetchAPI from "../../lib/api";
 
-export default function UserData(props) {
-  const user = useUser(() => props.params.id);
 
-  return {
-    get user() {
-      return user();
-    }
-  };
+export default function UserData({ params }) {
+  const [user] = createResource(() => `user/${params.id}`, fetchAPI);
+  return user;
 }

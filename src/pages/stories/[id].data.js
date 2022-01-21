@@ -1,11 +1,7 @@
-import { useStory } from "../../lib/api";
+import { createResource } from "solid-js";
+import fetchAPI from "../../lib/api";
 
-export default function StoryData(props) {
-  const story = useStory(() => props.params.id);
-
-  return {
-    get story() {
-      return story();
-    }
-  };
+export default function StoryData({ params }) {
+  const [story] = createResource(() => `item/${params.id}`, fetchAPI);
+  return story;
 }

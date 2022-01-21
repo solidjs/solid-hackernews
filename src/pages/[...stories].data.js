@@ -1,19 +1,18 @@
-import { useStories } from "../lib/api";
+import { createResource } from "solid-js";
+import fetchAPI from "../lib/api";
 
-export default function StoriesData(props) {
-  const page = () => +(props.query.page || 1),
-    type = () => props.params.stories || "top",
-    stories = useStories(type, page);
+const mapStories = {
+  top: "news",
+  new: "newest",
+  show: "show",
+  ask: "ask",
+  job: "jobs",
+};
 
-  return {
-    get type() {
-      return type();
-    },
-    get stories() {
-      return stories();
-    },
-    get page() {
-      return page();
-    }
-  };
+export default function StoriesData({ location, params }) {
+  const page = () => +(location.query.page || 1),
+    type = () => params.stories || "top",
+    [stories] = createResource(() => `${mapStories[type()]}?page=${page()}`, fetchAPI);
+
+  return { type, stories, page }
 }

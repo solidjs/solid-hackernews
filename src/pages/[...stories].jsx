@@ -1,12 +1,13 @@
-import { Link } from "solid-app-router";
+import { Link, useData } from "solid-app-router";
 import Story from "../components/story";
 
-export default function Stories(props) {
+export default function Stories() {
+  const { stories, type, page } = useData();
   return (
     <div class="news-view">
       <div class="news-list-nav">
         <Show
-          when={props.page > 1}
+          when={page() > 1}
           fallback={
             <span class="page-link disabled" aria-hidden="true">
               &lt; prev
@@ -15,15 +16,15 @@ export default function Stories(props) {
         >
           <Link
             class="page-link"
-            href={`/${props.type}?page=${props.page - 1}`}
+            href={`/${type()}?page=${page() - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
           </Link>
         </Show>
-        <span>page {props.page}</span>
+        <span>page {page()}</span>
         <Show
-          when={props.stories?.length >= 28}
+          when={stories()?.length >= 28}
           fallback={
             <span class="page-link disabled" aria-hidden="true">
               more &gt;
@@ -32,7 +33,7 @@ export default function Stories(props) {
         >
           <Link
             class="page-link"
-            href={`/${props.type}?page=${props.page + 1}`}
+            href={`/${type()}?page=${page() + 1}`}
             aria-label="Next Page"
           >
             more {">"}
@@ -40,9 +41,9 @@ export default function Stories(props) {
         </Show>
       </div>
       <main class="news-list">
-        <Show when={props.stories}>
+        <Show when={stories()}>
           <ul>
-            <For each={props.stories}>{(story) => <Story story={story} />}</For>
+            <For each={stories()}>{(story) => <Story story={story} />}</For>
           </ul>
         </Show>
       </main>

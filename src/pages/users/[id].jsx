@@ -1,23 +1,26 @@
-export default function User(props) {
+import { useData } from "solid-app-router";
+
+export default function User() {
+  const user = useData();
   return (
     <div class="user-view">
-      <Show when={props.user}>
-        <Show when={!props.user.error} fallback={<h1>User not found.</h1>}>
-          <h1>User : {props.user.id}</h1>
+      <Show when={user()}>
+        <Show when={!user().error} fallback={<h1>User not found.</h1>}>
+          <h1>User : {user().id}</h1>
           <ul class="meta">
             <li>
-              <span class="label">Created:</span> {props.user.created}
+              <span class="label">Created:</span> {user().created}
             </li>
             <li>
-              <span class="label">Karma:</span> {props.user.karma}
+              <span class="label">Karma:</span> {user().karma}
             </li>
-            <Show when={props.user.about}>
-              <li innerHTML={props.user.about} class="about" />{" "}
+            <Show when={user().about}>
+              <li innerHTML={user().about} class="about" />{" "}
             </Show>
           </ul>
           <p class="links">
-            <a href={`https://news.ycombinator.com/submitted?id=${props.user.id}`}>submissions</a> |{" "}
-            <a href={`https://news.ycombinator.com/threads?id=${props.user.id}`}>comments</a>
+            <a href={`https://news.ycombinator.com/submitted?id=${user().id}`}>submissions</a> |{" "}
+            <a href={`https://news.ycombinator.com/threads?id=${user().id}`}>comments</a>
           </p>
         </Show>
       </Show>

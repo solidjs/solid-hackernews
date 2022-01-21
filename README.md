@@ -2,7 +2,7 @@
 
 Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). Uses Solid and Solid App Router.
 
-You can view it [here](http://solidjs.github.io/solid-hackernews).
+You can view it [here](https://hackernews-csr.ryansolid.workers.dev/).
 
 ## Testing Locally:
 First, you'll need to clone this repo, then cd into the `solid-hackernews` folder

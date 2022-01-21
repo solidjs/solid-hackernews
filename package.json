@@ -2,11 +2,10 @@
   "name": "solid-hackernews",
   "version": "0.0.0",
   "description": "A Solid Implementation of the Hacker News Example App",
-  "main": "public/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "serve public -l 5000 -s & rollup -w -c",
     "build": "rollup -c --environment production",
-    "build:deploy": "rollup -c --environment production --configDeploy",
     "serve": "serve public -l 5000 -s",
     "test": "test"
   },
@@ -24,21 +23,22 @@
   "bugs": {
     "url": "https://github.com/solidjs/solid-hackernews/issues"
   },
-  "homepage": "https://solidjs.github.io/solid-hackernews",
+  "homepage": "https://hackernews-csr.ryansolid.workers.dev/",
   "dependencies": {
-    "solid-app-router": "0.0.50",
-    "solid-js": "1.0.0"
+    "solid-app-router": "0.2.1",
+    "solid-js": "1.3.3"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
     "@babel/plugin-proposal-optional-chaining": "7.14.5",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@cloudflare/kv-asset-handler": "^0.2.0",
     "@open-wc/rollup-plugin-html": "^1.2.5",
     "@rollup/plugin-alias": "3.1.2",
     "@rollup/plugin-babel": "5.3.0",
     "@rollup/plugin-node-resolve": "13.0.0",
     "@rollup/plugin-replace": "2.4.2",
-    "babel-preset-solid": "1.0.0",
+    "babel-preset-solid": "1.3.2",
     "rollup": "2.52.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",

@@ -19,32 +19,16 @@ function template({ bundle }) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Hacker News Clone built with Solid">
-    <link rel="stylesheet" href="${publicPath}/index.css" />
-    <link rel="shortcut icon" href="${publicPath}/favicon.ico" />
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
-    <link rel="manifest" href="${publicPath}/manifest.webmanifest">
-    <link rel="modulepreload" href="${publicPath}/${chunks.find((s) => s.startsWith("[...stories]"))}" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="modulepreload" href="/${chunks.find((s) => s.startsWith("[...stories]"))}" />
   </head>
-  <body><script type="module" src="${bundle.entrypoints[0].importPath}"></script></body>
+  <body><script type="module" src="${bundle.entrypoints[0].importPath.slice(1)}"></script></body>
 </html>`;
 }
 
-export default (config) => {
-  config.configDeploy && (publicPath = url.parse(pkg.homepage).pathname);
+export default () => {
   return {
     input: "src/index.jsx",
     output: {
