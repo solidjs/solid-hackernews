@@ -10,9 +10,11 @@ export default function Story() {
           <a href={story().url} target="_blank">
             <h1>{story().title}</h1>
           </a>
-          <span v-if="item.url" class="host">
-            ({story().domain})
-          </span>
+          <Show when={story().domain}>
+            <span class="host">
+              ({story().domain})
+            </span>
+          </Show>
           <p class="meta">
             {story().points} points | by{" "}
             <Link href={`/users/${story().user}`}>{story().user}</Link>{" "}
