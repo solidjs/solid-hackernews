@@ -18,7 +18,7 @@ export default function Story() {
           <p class="meta">
             {story().points} points | by{" "}
             <Link href={`/users/${story().user}`}>{story().user}</Link>{" "}
-            {story().time_ago} ago
+            {story().time_ago}
           </p>
         </div>
         <div class="item-view-comments">
