@@ -9,7 +9,7 @@ export default function Comment(props) {
     <li class="comment">
       <div class="by">
         <Link href={`/users/${props.comment.user}`}>{props.comment.user}</Link>{" "}
-        {props.comment.time_ago} ago
+        {props.comment.time_ago}
       </div>
       <div class="text" innerHTML={props.comment.content} />
       <Show when={props.comment.comments.length}>
