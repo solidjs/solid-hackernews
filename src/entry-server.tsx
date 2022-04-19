@@ -1,3 +1,3 @@
-import { StartServer, renderAsync } from "solid-start/entry-server";
+import { StartServer, renderStream } from "solid-start/entry-server";
 
-export default renderAsync((context) => <StartServer context={context} />)();
+export default renderStream((context) => <StartServer context={context} />)();
