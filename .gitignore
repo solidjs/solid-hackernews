@@ -4,6 +4,7 @@ worker
 .vercel
 .output
 .netlify
+netlify
 
 # dependencies
 /node_modules

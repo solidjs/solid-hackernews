@@ -1,1 +1,0 @@
-module.exports = require('./src/dist/functions/index.js')
