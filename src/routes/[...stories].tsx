@@ -1,4 +1,4 @@
-import { Link, useRouteData, RouteDataFunc } from "solid-app-router";
+import { Link, useRouteData, RouteDataFunc } from "@solidjs/router";
 import { For, Show, createResource, Component } from "solid-js";
 import fetchAPI from "~/lib/api";
 import Story from "~/components/story";
