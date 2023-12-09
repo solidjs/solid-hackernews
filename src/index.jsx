@@ -1,25 +1,20 @@
 import { render } from "solid-js/web";
-import { Router, useRoutes } from "solid-app-router";
-
-import Nav from "./components/nav";
+import { Router } from "@solidjs/router";
 
 import routes from "./routes";
 
-const Outlet = useRoutes(routes);
-
 render(
   () => (
-    <Router routes={routes} root={process.env.PUBLIC_URL}>
-      <Nav />
-      <Outlet />
+    <Router routes={routes} base={process.env.PUBLIC_URL}>
+      {routes}
     </Router>
   ),
   document.body
 );
 
-if ("serviceWorker" in navigator) {
-  // Use the window load event to keep the page load performant
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}sw.js`);
-  });
-}
+// if ("serviceWorker" in navigator) {
+//   // Use the window load event to keep the page load performant
+//   window.addEventListener("load", () => {
+//     navigator.serviceWorker.register(`${process.env.PUBLIC_URL}sw.js`);
+//   });
+// }

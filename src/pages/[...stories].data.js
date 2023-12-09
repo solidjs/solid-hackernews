@@ -1,4 +1,4 @@
-import { createResource } from "solid-js";
+import { cache } from "@solidjs/router";
 import fetchAPI from "../lib/api";
 
 const mapStories = {
@@ -6,13 +6,13 @@ const mapStories = {
   new: "newest",
   show: "show",
   ask: "ask",
-  job: "jobs",
+  job: "jobs"
 };
 
-export default function StoriesData({ location, params }) {
-  const page = () => +(location.query.page || 1),
-    type = () => params.stories || "top",
-    [stories] = createResource(() => `${mapStories[type()]}?page=${page()}`, fetchAPI);
+export const getStories = cache(
+  (type, page) => fetchAPI(`${mapStories[type]}?page=${page}`),
+  "stories"
+);
 
-  return { type, stories, page }
-}
+export default ({ location, params }) =>
+  getStories(params.stories || "top", +(location.query.page || 1));

@@ -1,8 +1,11 @@
-import { Link, useData } from "solid-app-router";
+import { createAsync } from "@solidjs/router";
+import { getStories } from "./[...stories].data";
 import Story from "../components/story";
 
-export default function Stories() {
-  const { stories, type, page } = useData();
+export default function Stories(props) {
+  const page = () => +(props.location.query.page || 1),
+    type = () => props.params.stories || "top",
+    stories = createAsync(() => getStories(type(), page()));
   return (
     <div class="news-view">
       <div class="news-list-nav">
@@ -14,13 +17,9 @@ export default function Stories() {
             </span>
           }
         >
-          <Link
-            class="page-link"
-            href={`/${type()}?page=${page() - 1}`}
-            aria-label="Previous Page"
-          >
+          <a class="page-link" href={`/${type()}?page=${page() - 1}`} aria-label="Previous Page">
             {"<"} prev
-          </Link>
+          </a>
         </Show>
         <span>page {page()}</span>
         <Show
@@ -31,13 +30,9 @@ export default function Stories() {
             </span>
           }
         >
-          <Link
-            class="page-link"
-            href={`/${type()}?page=${page() + 1}`}
-            aria-label="Next Page"
-          >
+          <a class="page-link" href={`/${type()}?page=${page() + 1}`} aria-label="Next Page">
             more {">"}
-          </Link>
+          </a>
         </Show>
       </div>
       <main class="news-list">

@@ -1,5 +1,4 @@
 import { createSignal } from "solid-js";
-import { Link } from "solid-app-router";
 
 const pluralize = (n) => n + (n === 1 ? " reply" : " replies");
 
@@ -8,7 +7,7 @@ export default function Comment(props) {
   return (
     <li class="comment">
       <div class="by">
-        <Link href={`/users/${props.comment.user}`}>{props.comment.user}</Link>{" "}
+        <a href={`/users/${props.comment.user}`}>{props.comment.user}</a>{" "}
         {props.comment.time_ago} ago
       </div>
       <div class="text" innerHTML={props.comment.content} />

@@ -1,7 +1,8 @@
-import { useData } from "solid-app-router";
+import { createAsync } from "@solidjs/router";
+import { getUser } from "./[id].data";
 
-export default function User() {
-  const user = useData();
+export default function User(props) {
+  const user = createAsync(() => getUser(props.params.id));
   return (
     <div class="user-view">
       <Show when={user()}>

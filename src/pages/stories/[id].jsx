@@ -1,8 +1,9 @@
-import { Link, useData } from "solid-app-router";
+import { createAsync } from "@solidjs/router";
+import { getStory } from "./[id].data";
 import Comment from "../../components/comment";
 
-export default function Story() {
-  const story = useData();
+export default function Story(props) {
+  const story = createAsync(() => getStory(props.params.id));
   return (
     <Show when={story()}>
       <div class="item-view">
@@ -17,7 +18,7 @@ export default function Story() {
           </Show>
           <p class="meta">
             {story().points} points | by{" "}
-            <Link href={`/users/${story().user}`}>{story().user}</Link>{" "}
+            <a href={`/users/${story().user}`}>{story().user}</a>{" "}
             {story().time_ago} ago
           </p>
         </div>

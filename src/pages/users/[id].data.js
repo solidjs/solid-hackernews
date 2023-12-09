@@ -1,8 +1,6 @@
-import { createResource } from "solid-js";
+import { cache } from "@solidjs/router";
 import fetchAPI from "../../lib/api";
 
+export const getUser = cache((id) => fetchAPI(`user/${id}`), "user");
 
-export default function UserData({ params }) {
-  const [user] = createResource(() => `user/${params.id}`, fetchAPI);
-  return user;
-}
+export default ({ params }) => getUser(params.id);

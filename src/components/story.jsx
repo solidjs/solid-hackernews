@@ -1,5 +1,3 @@
-import { Link } from "solid-app-router";
-
 export default function Story(props) {
   return (
     <li class="news-item">
@@ -7,7 +5,7 @@ export default function Story(props) {
       <span class="title">
         <Show
           when={props.story.url && !props.story.url.startsWith('item?id=')}
-          fallback={<Link href={`/item/${props.story.id}`}>{props.story.title}</Link>}
+          fallback={<a href={`/item/${props.story.id}`}>{props.story.title}</a>}
         >
           <a href={props.story.url} target="_blank" rel="noreferrer">
             {props.story.title}
@@ -19,13 +17,13 @@ export default function Story(props) {
       <span class="meta">
         <Show
           when={props.story.type !== "job"}
-          fallback={<Link href={`/stories/${props.story.id}`}>{props.story.time_ago}</Link>}
+          fallback={<a href={`/stories/${props.story.id}`}>{props.story.time_ago}</a>}
         >
-          by <Link href={`/users/${props.story.user}`}>{props.story.user}</Link>{" "}
+          by <a href={`/users/${props.story.user}`}>{props.story.user}</a>{" "}
           {props.story.time_ago} |{" "}
-          <Link href={`/stories/${props.story.id}`}>
+          <a href={`/stories/${props.story.id}`}>
             {props.story.comments_count ? `${props.story.comments_count} comments` : "discuss"}
-          </Link>
+          </a>
         </Show>
       </span>
       <Show when={props.story.type !== "link"}>

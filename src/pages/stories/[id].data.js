@@ -1,7 +1,6 @@
-import { createResource } from "solid-js";
+import { cache } from "@solidjs/router";
 import fetchAPI from "../../lib/api";
 
-export default function StoryData({ params }) {
-  const [story] = createResource(() => `item/${params.id}`, fetchAPI);
-  return story;
-}
+export const getStory = cache((id) => fetchAPI(`item/${id}`), "story");
+
+export default ({ params }) => getStory(params.id);

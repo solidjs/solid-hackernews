@@ -1,24 +1,22 @@
-import { Link } from "solid-app-router";
-
 export default function Nav() {
   return (
     <header class="header">
       <nav class="inner">
-        <Link href="/">
+        <a href="/">
           <strong>HN</strong>
-        </Link>
-        <Link href="/new">
+        </a>
+        <a href="/new">
           <strong>New</strong>
-        </Link>
-        <Link href="/show">
+        </a>
+        <a href="/show">
           <strong>Show</strong>
-        </Link>
-        <Link href="/ask">
+        </a>
+        <a href="/ask">
           <strong>Ask</strong>
-        </Link>
-        <Link href="/job">
+        </a>
+        <a href="/job">
           <strong>Jobs</strong>
-        </Link>
+        </a>
         <a class="github" href="http://github.com/solidjs/solid" target="_blank" rel="noreferrer">
           Built with Solid
         </a>
