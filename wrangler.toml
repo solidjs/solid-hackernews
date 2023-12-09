@@ -1,0 +1,8 @@
+name = "hackernews-csr"
+type = "javascript"
+workers_dev = true
+main = "index.js"
+compatibility_date = "2023-12-08"
+
+[site]
+bucket = "./public"

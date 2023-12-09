@@ -7,9 +7,6 @@ public/*
 !public/img
 !public/sw.js
 
-wrangler.toml
-dist
-
 # dependencies
 /node_modules
 
@@ -19,7 +16,6 @@ dist
 .classpath
 *.launch
 .settings/
-
 
 #System Files
 .DS_Store

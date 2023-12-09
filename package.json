@@ -41,6 +41,7 @@
     "rollup": "4.7.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "wrangler": "^3.19.0"
   }
 }
