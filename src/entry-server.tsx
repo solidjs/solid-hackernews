@@ -9,6 +9,8 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
+          <meta name="description" content="Hacker News Clone built with Solid" />
+          <link rel="manifest" href="/manifest.webmanifest" />
           {assets}
         </head>
         <body>

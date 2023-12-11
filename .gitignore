@@ -4,6 +4,7 @@ worker
 .vercel
 .output
 .netlify
+.vinxi
 netlify
 
 # dependencies
