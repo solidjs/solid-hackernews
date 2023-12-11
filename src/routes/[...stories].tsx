@@ -1,8 +1,8 @@
-import { Link, useRouteData, RouteDataFunc } from "@solidjs/router";
+import { A, useRouteData, RouteDefinition } from "@solidjs/router";
 import { For, Show, createResource, Component } from "solid-js";
 import fetchAPI from "~/lib/api";
 import Story from "~/components/story";
-import { IStory } from "~/types";
+import type { StoryDefinition } from "~/types";
 
 const mapStories = {
   top: "news",
@@ -12,26 +12,22 @@ const mapStories = {
   job: "jobs",
 } as const;
 
-interface StoriesData {
-  page: () => number;
-  type: () => string;
-  stories: () => IStory[];
-}
+export const route = {
+  data({ location, params }) {
+    const page = () => +location.query.page || 1;
+    const type = () => params.stories || "top";
 
-export const routeData: RouteDataFunc<StoriesData> = ({ location, params }) => {
-  const page = () => +location.query.page || 1;
-  const type = () => params.stories || "top";
+    const [stories] = createResource<StoryDefinition[], string>(
+      () => `${mapStories[type()]}?page=${page()}`,
+      fetchAPI
+    );
 
-  const [stories] = createResource(
-    () => `${mapStories[type()]}?page=${page()}`,
-    fetchAPI
-  );
-
-  return { type, stories, page };
-};
+    return { type, stories, page };
+  },
+} satisfies Partial<RouteDefinition>;
 
 const Stories: Component = () => {
-  const { page, type, stories } = useRouteData<StoriesData>();
+  const { page, type, stories } = useRouteData<typeof route.data>();
   return (
     <div class="news-view">
       <div class="news-list-nav">
@@ -43,13 +39,13 @@ const Stories: Component = () => {
             </span>
           }
         >
-          <Link
+          <A
             class="page-link"
             href={`/${type()}?page=${page() - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
-          </Link>
+          </A>
         </Show>
         <span>page {page()}</span>
         <Show
@@ -60,19 +56,21 @@ const Stories: Component = () => {
             </span>
           }
         >
-          <Link
+          <A
             class="page-link"
             href={`/${type()}?page=${page() + 1}`}
             aria-label="Next Page"
           >
             more {">"}
-          </Link>
+          </A>
         </Show>
       </div>
       <main class="news-list">
         <Show when={stories()}>
           <ul>
-            <For each={stories()}>{(story) => <Story story={story} />}</For>
+            <For each={stories()}>
+              {(story) => <Story story={story} />}
+            </For>
           </ul>
         </Show>
       </main>

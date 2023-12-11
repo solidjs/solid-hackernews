@@ -1,30 +1,33 @@
-import { Link } from "@solidjs/router";
+import { A } from "@solidjs/router";
 
-function Nav() {
+export default function Nav() {
   return (
     <header class="header" $ServerOnly>
       <nav class="inner">
-        <Link href="/">
+        <A href="/">
           <strong $ServerOnly>HN</strong>
-        </Link>
-        <Link href="/new">
+        </A>
+        <A href="/new">
           <strong $ServerOnly>New</strong>
-        </Link>
-        <Link href="/show">
+        </A>
+        <A href="/show">
           <strong $ServerOnly>Show</strong>
-        </Link>
-        <Link href="/ask">
+        </A>
+        <A href="/ask">
           <strong $ServerOnly>Ask</strong>
-        </Link>
-        <Link href="/job">
+        </A>
+        <A href="/job">
           <strong $ServerOnly>Jobs</strong>
-        </Link>
-        <a class="github" href="http://github.com/solidjs/solid" target="_blank" rel="noreferrer">
+        </A>
+        <a
+          class="github"
+          href="http://github.com/solidjs/solid"
+          target="_blank"
+          rel="noreferrer"
+        >
           Built with Solid
         </a>
       </nav>
     </header>
   );
 }
-
-export default Nav;

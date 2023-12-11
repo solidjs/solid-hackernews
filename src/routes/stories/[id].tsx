@@ -1,16 +1,21 @@
-import { Link, useRouteData, RouteDataFuncArgs } from "@solidjs/router";
-import { Component, For, Show, createResource } from "solid-js";
-import type { IStory } from "~/types";
+import { A, useRouteData, RouteDefinition } from "@solidjs/router";
+import { For, Show, createResource } from "solid-js";
+import type { StoryDefinition } from "~/types";
 import Comment from "~/components/comment";
 import fetchAPI from "~/lib/api";
 
-export const routeData = ({ params }: RouteDataFuncArgs) => {
-  const [story] = createResource<IStory, string>(() => `item/${params.id}`, fetchAPI);
-  return story;
-};
+export const route = {
+  data({ params }) {
+    const [story] = createResource<StoryDefinition, string>(
+      () => `item/${params.id}`,
+      fetchAPI
+    );
+    return story;
+  },
+} satisfies Partial<RouteDefinition>;
 
-const Story: Component = () => {
-  const story = useRouteData<typeof routeData>();
+export default function Story() {
+  const story = useRouteData<typeof route.data>();
   return (
     <Show when={story()}>
       <div class="item-view">
@@ -23,7 +28,7 @@ const Story: Component = () => {
           </Show>
           <p class="meta">
             {story().points} points | by{" "}
-            <Link href={`/users/${story().user}`}>{story().user}</Link>{" "}
+            <A href={`/users/${story().user}`}>{story().user}</A>{" "}
             {story().time_ago} ago
           </p>
         </div>
@@ -43,5 +48,3 @@ const Story: Component = () => {
     </Show>
   );
 };
-
-export default Story;

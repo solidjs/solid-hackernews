@@ -1,16 +1,16 @@
-import { Link } from "@solidjs/router";
-import { Component, Show } from "solid-js";
+import { A } from "@solidjs/router";
+import { Show } from "solid-js";
 
-import type { IStory } from "../types";
+import type { StoryDefinition } from "../types";
 
-const Story: Component<{ story: IStory }> = (props) => {
+export default function Story(props: { story: StoryDefinition }) {
   return (
     <li class="news-item">
       <span class="score">{props.story.points}</span>
       <span class="title">
         <Show
-          when={props.story.url && !props.story.url.startsWith('item?id=')}
-          fallback={<Link href={`/item/${props.story.id}`}>{props.story.title}</Link>}
+          when={props.story.url && !props.story.url.startsWith("item?id=")}
+          fallback={<A href={`/item/${props.story.id}`}>{props.story.title}</A>}
         >
           <a href={props.story.url} target="_blank" rel="noreferrer">
             {props.story.title}
@@ -22,13 +22,17 @@ const Story: Component<{ story: IStory }> = (props) => {
       <span class="meta">
         <Show
           when={props.story.type !== "job"}
-          fallback={<Link href={`/stories/${props.story.id}`}>{props.story.time_ago}</Link>}
+          fallback={
+            <A href={`/stories/${props.story.id}`}>{props.story.time_ago}</A>
+          }
         >
-          by <Link href={`/users/${props.story.user}`}>{props.story.user}</Link>{" "}
+          by <A href={`/users/${props.story.user}`}>{props.story.user}</A>{" "}
           {props.story.time_ago} |{" "}
-          <Link href={`/stories/${props.story.id}`}>
-            {props.story.comments_count ? `${props.story.comments_count} comments` : "discuss"}
-          </Link>
+          <A href={`/stories/${props.story.id}`}>
+            {props.story.comments_count
+              ? `${props.story.comments_count} comments`
+              : "discuss"}
+          </A>
         </Show>
       </span>
       <Show when={props.story.type !== "link"}>
@@ -37,6 +41,4 @@ const Story: Component<{ story: IStory }> = (props) => {
       </Show>
     </li>
   );
-};
-
-export default Story;
+}
