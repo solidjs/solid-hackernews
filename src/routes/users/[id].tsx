@@ -1,47 +1,42 @@
-import { Show, createResource } from "solid-js";
-import { useRouteData, RouteDefinition } from "@solidjs/router";
+import { cache, createAsync, type RouteDefinition, type RouteSectionProps } from "@solidjs/router";
+import { Show } from "solid-js";
 import fetchAPI from "~/lib/api";
-import type { UserDefinition } from "~/types";
+import { UserDefinition } from "~/types";
+
+export const getUser = cache(async (id: string): Promise<UserDefinition> => {
+  return fetchAPI(`user/${id}`);
+}, "user");
 
 export const route = {
-  data({ params }) {
-    const [user] = createResource<UserDefinition, string>(
-      () => `user/${params.id}`,
-      fetchAPI
-    );
-    return user;
-  },
-} satisfies Partial<RouteDefinition>;
+  load({ params }) {
+    void getUser(params.id);
+  }
+} satisfies RouteDefinition;
 
-export default function User() {
-  const user = useRouteData<typeof route.data>();
+export default function User(props: RouteSectionProps) {
+  const user = createAsync(() => getUser(props.params.id));
   return (
     <div class="user-view">
       <Show when={user()}>
-        <Show when={!user().error} fallback={<h1>User not found.</h1>}>
-          <h1>User : {user().id}</h1>
+        <Show when={!user()!.error} fallback={<h1>User not found.</h1>}>
+          <h1>User : {user()!.id}</h1>
           <ul class="meta">
             <li>
-              <span class="label">Created:</span> {user().created}
+              <span class="label">Created:</span> {user()!.created}
             </li>
             <li>
-              <span class="label">Karma:</span> {user().karma}
+              <span class="label">Karma:</span> {user()!.karma}
             </li>
-            <Show when={user().about}>
-              <li innerHTML={user().about} class="about" />{" "}
+            <Show when={user()!.about}>
+              <li innerHTML={user()!.about} class="about" />{" "}
             </Show>
           </ul>
           <p class="links">
-            <a href={`https://news.ycombinator.com/submitted?id=${user().id}`}>
-              submissions
-            </a>{" "}
-            |{" "}
-            <a href={`https://news.ycombinator.com/threads?id=${user().id}`}>
-              comments
-            </a>
+            <a href={`https://news.ycombinator.com/submitted?id=${user()!.id}`}>submissions</a> |{" "}
+            <a href={`https://news.ycombinator.com/threads?id=${user()!.id}`}>comments</a>
           </p>
         </Show>
       </Show>
     </div>
   );
-}
+};

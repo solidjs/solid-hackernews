@@ -1,8 +1,13 @@
-import { A, useRouteData, RouteDefinition } from "@solidjs/router";
-import { For, Show, createResource, Component } from "solid-js";
+import {
+  createAsync,
+  type RouteDefinition,
+  cache,
+  type RouteSectionProps,
+} from "@solidjs/router";
+import { For, Show } from "solid-js";
 import fetchAPI from "~/lib/api";
 import Story from "~/components/story";
-import type { StoryDefinition } from "~/types";
+import type { StoryDefinition, StoryTypes } from "~/types";
 
 const mapStories = {
   top: "news",
@@ -12,22 +17,26 @@ const mapStories = {
   job: "jobs",
 } as const;
 
-export const route = {
-  data({ location, params }) {
-    const page = () => +location.query.page || 1;
-    const type = () => params.stories || "top";
-
-    const [stories] = createResource<StoryDefinition[], string>(
-      () => `${mapStories[type()]}?page=${page()}`,
-      fetchAPI
-    );
-
-    return { type, stories, page };
+const getStories = cache(
+  async (type: StoryTypes, page: number): Promise<StoryDefinition[]> => {
+    return fetchAPI(`${mapStories[type]}?page=${page}`);
   },
-} satisfies Partial<RouteDefinition>;
+  "stories"
+);
 
-const Stories: Component = () => {
-  const { page, type, stories } = useRouteData<typeof route.data>();
+export const route = {
+  load({ location, params }) {
+    void getStories(
+      (params.stories as StoryTypes) || "top",
+      +location.query.page || 1
+    );
+  },
+} satisfies RouteDefinition;
+
+export default function Stories(props: RouteSectionProps) {
+  const page = () => +props.location.query.page || 1;
+  const type = () => (props.params.stories || "top") as StoryTypes;
+  const stories = createAsync(() => getStories(type(), page()));
   return (
     <div class="news-view">
       <div class="news-list-nav">
@@ -39,13 +48,13 @@ const Stories: Component = () => {
             </span>
           }
         >
-          <A
+          <a
             class="page-link"
             href={`/${type()}?page=${page() - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
-          </A>
+          </a>
         </Show>
         <span>page {page()}</span>
         <Show
@@ -56,26 +65,22 @@ const Stories: Component = () => {
             </span>
           }
         >
-          <A
+          <a
             class="page-link"
             href={`/${type()}?page=${page() + 1}`}
             aria-label="Next Page"
           >
             more {">"}
-          </A>
+          </a>
         </Show>
       </div>
       <main class="news-list">
         <Show when={stories()}>
           <ul>
-            <For each={stories()}>
-              {(story) => <Story story={story} />}
-            </For>
+            <For each={stories()}>{(story) => <Story story={story} />}</For>
           </ul>
         </Show>
       </main>
     </div>
   );
-};
-
-export default Stories;
+}
