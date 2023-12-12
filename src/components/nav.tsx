@@ -3,19 +3,19 @@ export default function Nav() {
     <header class="header" $ServerOnly>
       <nav class="inner">
         <a href="/">
-          <strong $ServerOnly>HN</strong>
+          <strong>HN</strong>
         </a>
         <a href="/new">
-          <strong $ServerOnly>New</strong>
+          <strong>New</strong>
         </a>
         <a href="/show">
-          <strong $ServerOnly>Show</strong>
+          <strong>Show</strong>
         </a>
         <a href="/ask">
-          <strong $ServerOnly>ask</strong>
+          <strong>Ask</strong>
         </a>
         <a href="/job">
-          <strong $ServerOnly>Jobs</strong>
+          <strong>Jobs</strong>
         </a>
         <a
           class="github"
