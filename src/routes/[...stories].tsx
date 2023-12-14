@@ -1,11 +1,8 @@
-import {
-  createAsync,
-  type RouteDefinition,
-  cache,
-  type RouteSectionProps,
-} from "@solidjs/router";
+import { type RouteDefinition, type RouteSectionProps } from "@solidjs/router";
+import { createQuery } from "@tanstack/solid-query";
 import { For, Show } from "solid-js";
 import fetchAPI from "~/lib/api";
+import queryClient from "~/lib/queryClient";
 import Story from "~/components/story";
 import type { StoryDefinition, StoryTypes } from "~/types";
 
@@ -17,26 +14,28 @@ const mapStories = {
   job: "jobs",
 } as const;
 
-const getStories = cache(
-  async (type: StoryTypes, page: number): Promise<StoryDefinition[]> => {
-    return fetchAPI(`${mapStories[type]}?page=${page}`);
-  },
-  "stories"
-);
+const getStories = async (type: StoryTypes, page: number): Promise<StoryDefinition[]> => {
+  return fetchAPI(`${mapStories[type]}?page=${page}`);
+};
 
 export const route = {
   load({ location, params }) {
-    void getStories(
-      (params.stories as StoryTypes) || "top",
-      +location.query.page || 1
-    );
+    const type = (params.stories || "top") as StoryTypes;
+    const page = +location.query.page || 1;
+    queryClient.prefetchQuery({
+      queryKey: ["stories", type, page],
+      queryFn: () => getStories(type, page),
+    });
   },
 } satisfies RouteDefinition;
 
 export default function Stories(props: RouteSectionProps) {
   const page = () => +props.location.query.page || 1;
   const type = () => (props.params.stories || "top") as StoryTypes;
-  const stories = createAsync(() => getStories(type(), page()));
+  const query = createQuery(() => ({
+    queryKey: ["stories", type(), page()],
+    queryFn: () => getStories(type(), page()),
+  }));
   return (
     <div class="news-view">
       <div class="news-list-nav">
@@ -58,7 +57,7 @@ export default function Stories(props: RouteSectionProps) {
         </Show>
         <span>page {page()}</span>
         <Show
-          when={stories() && stories().length >= 29}
+          when={query.data && query.data.length >= 29}
           fallback={
             <span class="page-link disabled" aria-disabled="true">
               more {">"}
@@ -75,9 +74,9 @@ export default function Stories(props: RouteSectionProps) {
         </Show>
       </div>
       <main class="news-list">
-        <Show when={stories()}>
+        <Show when={query.data}>
           <ul>
-            <For each={stories()}>{(story) => <Story story={story} />}</For>
+            <For each={query.data}>{(story) => <Story story={story} />}</For>
           </ul>
         </Show>
       </main>
