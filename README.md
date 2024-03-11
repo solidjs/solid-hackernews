@@ -2,9 +2,7 @@
 
 Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). It is powered by [`solid-start`](https://github.com/solidjs/solid-start);
 
-You can view it on:
-[Netlify Functions](https://solid-start-hn.netlify.app/).
-[Netlify Edge](https://solid-hackernews-edge.netlify.app/).
+You can view it on [here]](https://solid-hackernews.deno.dev).
 
 ## Developing
 
