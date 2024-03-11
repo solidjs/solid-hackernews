@@ -5,6 +5,7 @@ worker
 .output
 .netlify
 .vinxi
+.amplify-hosting
 netlify
 
 # dependencies
