@@ -3,8 +3,7 @@
 Demo app based on [Vue Hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0). It is powered by [`solid-start`](https://github.com/solidjs/solid-start);
 
 You can view it on:
-[Vercel Functions](https://solid-hackernews-fn.vercel.app/).
-[Vercel Edge](https://solid-hackernews.vercel.app/).
+[Vercel CSR](https://solid-hackernews-csr.vercel.app/).
 
 ## Developing
 
