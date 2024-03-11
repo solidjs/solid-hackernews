@@ -3,7 +3,7 @@ import { Show } from "solid-js";
 import fetchAPI from "~/lib/api";
 import { UserDefinition } from "~/types";
 
-export const getUser = cache(async (id: string): Promise<UserDefinition> => {
+const getUser = cache(async (id: string): Promise<UserDefinition> => {
   return fetchAPI(`user/${id}`);
 }, "user");
 
