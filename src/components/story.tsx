@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import { Show } from "solid-js";
 
 import type { StoryDefinition } from "../types";
@@ -9,7 +10,7 @@ export default function Story(props: { story: StoryDefinition }) {
       <span class="title">
         <Show
           when={props.story.url && !props.story.url.startsWith("item?id=")}
-          fallback={<a href={`/item/${props.story.id}`}>{props.story.title}</a>}
+          fallback={<A href={`/item/${props.story.id}`}>{props.story.title}</A>}
         >
           <a href={props.story.url} target="_blank" rel="noreferrer">
             {props.story.title}
@@ -22,16 +23,16 @@ export default function Story(props: { story: StoryDefinition }) {
         <Show
           when={props.story.type !== "job"}
           fallback={
-            <a href={`/stories/${props.story.id}`}>{props.story.time_ago}</a>
+            <A href={`/stories/${props.story.id}`}>{props.story.time_ago}</A>
           }
         >
-          by <a href={`/users/${props.story.user}`}>{props.story.user}</a>{" "}
+          by <A href={`/users/${props.story.user}`}>{props.story.user}</A>{" "}
           {props.story.time_ago} |{" "}
-          <a href={`/stories/${props.story.id}`}>
+          <A href={`/stories/${props.story.id}`}>
             {props.story.comments_count
               ? `${props.story.comments_count} comments`
               : "discuss"}
-          </a>
+          </A>
         </Show>
       </span>
       <Show when={props.story.type !== "link"}>

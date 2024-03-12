@@ -1,5 +1,6 @@
 import {
   createAsync,
+  A,
   type RouteDefinition,
   cache,
   type RouteSectionProps,
@@ -48,13 +49,13 @@ export default function Stories(props: RouteSectionProps) {
             </span>
           }
         >
-          <a
+          <A
             class="page-link"
             href={`/${type()}?page=${page() - 1}`}
             aria-label="Previous Page"
           >
             {"<"} prev
-          </a>
+          </A>
         </Show>
         <span>page {page()}</span>
         <Show
@@ -65,13 +66,13 @@ export default function Stories(props: RouteSectionProps) {
             </span>
           }
         >
-          <a
+          <A
             class="page-link"
             href={`/${type()}?page=${page() + 1}`}
             aria-label="Next Page"
           >
             more {">"}
-          </a>
+          </A>
         </Show>
       </div>
       <main class="news-list">
